@@ -20,6 +20,9 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager instance;
 
+    public Transform startPosition;
+    public Transform resetPosition;
+
     private void Awake()
     {
         instance = this;
@@ -58,6 +61,11 @@ public class GameManager : MonoBehaviour {
         
         RewardDic.Add("boat", 100);
         RewardDic.Add("ship", 200);
+
+        startPosition = GameObject.FindGameObjectWithTag("Start").transform;
+        resetPosition = GameObject.FindGameObjectWithTag("resetPos").transform;
+        PlayerController.instance.setPositionPlayer(resetPosition);
+
     }
 
     public void addMoney(string tag)
@@ -106,6 +114,8 @@ public class GameManager : MonoBehaviour {
         TurnSpeedDic["ship"] = 2f;
         HealthDic["boat"] = 10f;
         HealthDic["ship"] = 20f;
+
+        PlayerController.instance.setPositionPlayer(resetPosition);
     }
     public void enableFrontCannon()
     {
@@ -113,5 +123,8 @@ public class GameManager : MonoBehaviour {
         PlayerController.instance.frontPos.gameObject.SetActive(true);
     }
 
-
+    public void setStartGamePlayerPos()
+    {
+        PlayerController.instance.setPositionPlayer(startPosition);
+    }
 }

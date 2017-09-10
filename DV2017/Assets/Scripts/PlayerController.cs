@@ -142,4 +142,12 @@ public class PlayerController : MonoBehaviour {
              }
         }
     }
+
+    public void setPositionPlayer(Transform newPos)
+    {
+        gameObject.transform.position = newPos.position;
+
+        Vector3 rot = newPos.rotation.eulerAngles;
+        gameObject.transform.Rotate(rot);
+    }
 }
