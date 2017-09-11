@@ -107,7 +107,9 @@ public class PlayerController : MonoBehaviour {
         leftPos.material.color = Color.red;
         rightPos.material.color = Color.red;
         frontPos.material.color = Color.red;
-        nestPos.material.color = Color.red; 
+        nestPos.material.color = Color.red;
+
+        CameraController.instance.nest = false;
     }
 
     public void reset()
