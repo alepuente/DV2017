@@ -15,7 +15,6 @@ public class MenuManager : MonoBehaviour
 
     public static MenuManager instance;
 
-    public Vector3 inicialPos;
     public GameObject menuHUD;
     public GameObject gameHUD;
     public GameObject pauseHUD;
@@ -109,6 +108,7 @@ public class MenuManager : MonoBehaviour
         gameHUD.SetActive(true);
         pauseHUD.SetActive(false);
         SpawnManager.instance.canSpawn = true;
+        GameManager.instance.setStartGamePlayerPos();
     }
     public void Pause()
     {
