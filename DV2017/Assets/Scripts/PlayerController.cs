@@ -38,12 +38,13 @@ public class PlayerController : MonoBehaviour {
     public Renderer frontPos;
     public Renderer nestPos;
 
-
+    private SMPlayer _stateMachine;
 
     private void Awake()
     {
         instance = this;
         sailorEvent.AddListener(spawnSailor);
+        _stateMachine = new SMPlayer();
     }
 
     private void Start()
@@ -53,12 +54,48 @@ public class PlayerController : MonoBehaviour {
     }
    
     private void Update()
-    {      
+    {
         MouseController();
-        Patrolling();
+        switch (_stateMachine.getActualState1())
+        {
+            case SMPlayer.States.FrontCannon: cannonFront = 1; 
+                break;
+            case SMPlayer.States.LeftCannon: cannonLeft = 1; 
+                break;
+            case SMPlayer.States.RightCannon: cannonRight = 1;
+                break;
+            case SMPlayer.States.Steering: Patrolling();
+                break;
+            case SMPlayer.States.OnNest: nestSailor = 1;
+                break;
+            case SMPlayer.States.Iddle:
+                break;
+            default:
+                break;
+        }
+
+        switch (_stateMachine.getActualState2())
+        {
+            case SMPlayer.States.FrontCannon: cannonFront = 1;
+                break;
+            case SMPlayer.States.LeftCannon: cannonLeft = 1;
+                break;
+            case SMPlayer.States.RightCannon: cannonRight = 1;
+                break;
+            case SMPlayer.States.Steering: MouseController(); Patrolling();
+                break;
+            case SMPlayer.States.OnNest: nestSailor = 1;
+                break;
+            case SMPlayer.States.Iddle:
+                break;
+            default:
+                break;
+        }
+        
+        
     }
 
-    public void reset()
+    private void resetPositions()
     {
         rudderSailor = 0;
         nestSailor = 0;
@@ -66,13 +103,16 @@ public class PlayerController : MonoBehaviour {
         cannonRight = 0;
         cannonFront = 0;
 
-        rudderPos.material.color = Color.red; ;
-        leftPos.material.color = Color.red; ;
-        rightPos.material.color = Color.red; ;
-        frontPos.material.color = Color.red; ;
-        nestPos.material.color = Color.red; ;
+        rudderPos.material.color = Color.red;
+        leftPos.material.color = Color.red;
+        rightPos.material.color = Color.red;
+        frontPos.material.color = Color.red;
+        nestPos.material.color = Color.red; 
+    }
 
-        
+    public void reset()
+    {
+        resetPositions();        
         waypoints.Clear();
         GetComponent<Rigidbody>().isKinematic = true;
         GetComponent<Rigidbody>().isKinematic = false;
@@ -82,7 +122,7 @@ public class PlayerController : MonoBehaviour {
 
     public void MouseController()
     {
-        if (InputManager.instance.getSelection() != Vector3.zero && rudderSailor == 1)
+        if (InputManager.instance.getSelection() != Vector3.zero)
         {
             waypoints.Clear();
             waypoints.Add(InputManager.instance.getSelection());
@@ -91,14 +131,16 @@ public class PlayerController : MonoBehaviour {
 
     private void spawnSailor(int sailorType)
     {
+        resetPositions();
         switch (sailorType)
         {
-            case 1: if (rudderSailor < 1) rudderSailor++; rudderPos.material.color = Color.green; break;
-            case 2: if (nestSailor < 1) nestSailor++; nestPos.material.color = Color.green; CameraController.instance.nest = true; break;
-            case 3: if (cannonLeft < 2) cannonLeft++; leftPos.material.color = Color.green; break;
-            case 4: if (cannonRight < 2) cannonRight++; rightPos.material.color = Color.green; break;
-            case 5: if (cannonFront < 2) cannonFront++; frontPos.material.color = Color.green; break;
+            case 1: _stateMachine.SetEvent1(SMPlayer.Events.ToRudder); rudderPos.material.color = Color.green; break;
+            case 2:_stateMachine.SetEvent1(SMPlayer.Events.ToNest); nestPos.material.color = Color.green; CameraController.instance.nest = true; break;
+            case 3:_stateMachine.SetEvent1(SMPlayer.Events.ToLeftCannon); leftPos.material.color = Color.green; break;
+            case 4:_stateMachine.SetEvent1(SMPlayer.Events.ToRightCannon); rightPos.material.color = Color.green; break;
+            case 5:_stateMachine.SetEvent1(SMPlayer.Events.ToRudder); frontPos.material.color = Color.green; break;
         }
+        Debug.Log("SpawnSailor: "+ sailorType);
     }
 
     public void Patrolling()
