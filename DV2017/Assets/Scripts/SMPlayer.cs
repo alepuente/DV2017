@@ -80,6 +80,12 @@ public class SMPlayer : MonoBehaviour {
         }
     }
 
+    public void resetStates()
+    {
+        _state1 = States.Iddle;
+        _state2 = States.Iddle;
+    }
+
     private void SetRelative(States origin, Events evnt, States dest)
     {
         _fsm[(int)origin, (int)evnt] = (int)dest;
@@ -91,15 +97,15 @@ public class SMPlayer : MonoBehaviour {
         {
             _state1 = (States)_fsm[(int)_state1, (int)ev];
         }
-        Debug.Log("Evento "+ ev);
+        Debug.Log("Evento para 1 "+ ev);
     }
     public void SetEvent2(Events ev)
     {
-        if (_fsm[(int)_state2, (int)ev] != -1 && _state1 != (States)_fsm[(int)_state1, (int)ev])
+        if (_fsm[(int)_state2, (int)ev] != -1 && _state1 != (States)_fsm[(int)_state2, (int)ev])
         {
             _state2 = (States)_fsm[(int)_state2, (int)ev];
         }
-        Debug.Log("Evento " + ev);
+        Debug.Log("Evento para 2 " + ev);
     }
 
 
@@ -110,6 +116,6 @@ public class SMPlayer : MonoBehaviour {
 
         public States getActualState2()
     {
-        return _state1;
+        return _state2;
     }
 }

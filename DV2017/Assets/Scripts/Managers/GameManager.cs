@@ -121,6 +121,8 @@ public class GameManager : MonoBehaviour {
     {
         PlayerController.instance.frontCannon.SetActive(true);
         PlayerController.instance.frontPos.gameObject.SetActive(true);
+        PlayerController.instance._frontCannonButton1.SetActive(true);
+        PlayerController.instance._frontCannonButton2.SetActive(true);
     }
 
     public void setStartGamePlayerPos()
