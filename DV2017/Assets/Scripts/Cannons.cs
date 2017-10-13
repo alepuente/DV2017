@@ -11,8 +11,6 @@ public class Cannons : MonoBehaviour
     public int sailors;
     public float shootTimer;
     public Renderer rangeColor;
-    
-    
 
     void Start()
     {
@@ -50,7 +48,8 @@ public class Cannons : MonoBehaviour
 
         if (sailors > 0 && shootTimer > GameManager.instance.FireRateDic[gameObject.name])
         {
-            rangeColor.material.color = Color.green;
+            if(sailors == 1) rangeColor.material.color = PlayerController.instance.Sailor1;
+            else             rangeColor.material.color = PlayerController.instance.Sailor2;
         }
         else
         {

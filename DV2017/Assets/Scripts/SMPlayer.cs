@@ -34,7 +34,7 @@ public class SMPlayer : MonoBehaviour {
         _fsm = new int[rows, columns];
         resetFSM();
         
-        SetRelative(States.Iddle,Events.ToFrontCannon,States.FrontCannon);
+        SetRelative(States.Iddle, Events.ToFrontCannon,States.FrontCannon);
         SetRelative(States.Iddle, Events.ToLeftCannon, States.LeftCannon);
         SetRelative(States.Iddle, Events.ToRightCannon, States.RightCannon);
         SetRelative(States.Iddle, Events.ToRudder, States.Steering);

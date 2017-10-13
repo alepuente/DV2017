@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour {
 
         startPosition = GameObject.FindGameObjectWithTag("Start").transform;
         resetPosition = GameObject.FindGameObjectWithTag("resetPos").transform;
-        PlayerController.instance.setPositionPlayer(resetPosition);
+        //PlayerController.instance.setPositionPlayer(resetPosition);
 
     }
 
