@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 14f9c2a63d5106c43862dda5a5cb2a38
+timeCreated: 1508110338
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Pirates Writers
+  fontNames:
+  - Pirates Writers
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

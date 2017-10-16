@@ -39,7 +39,6 @@ public class HUDManager : MonoBehaviour {
         ResetColorSailor2 = PlayerController.instance.Sailor2;
 
         ColorBlock tmp = NestSailor1.colors;
-
         tmp.pressedColor = ActivePositionSailor1;
         tmp.highlightedColor = ActivePositionSailor1;
         NestSailor1.colors = tmp;
@@ -47,6 +46,7 @@ public class HUDManager : MonoBehaviour {
         LeftCannonSailor1.colors = tmp;
         RightCannonSailor1.colors = tmp;
 
+        tmp = NestSailor2.colors;
         tmp.pressedColor = ActivePositionSailor2;
         tmp.highlightedColor = ActivePositionSailor2;
         NestSailor2.colors = tmp;
