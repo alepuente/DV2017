@@ -6,17 +6,14 @@ using UnityEngine.UI;
 public class CameraController : MonoBehaviour {
 
     public static CameraController instance;
-
-    public GameObject controlPos;
+    
     public GameObject closePos;
     public GameObject farPos;
     public GameObject menuPos;
 
     public Camera followCamera;
-    public Camera onBoardCamera;
     public Camera menuCamera;
-
-    private GameObject player;
+    
     private CameraPositions actualPos;
 
     public bool nest;
@@ -25,7 +22,6 @@ public class CameraController : MonoBehaviour {
 
     public enum CameraPositions
     {
-        Control,
         Close,
         Far,
         Menu
@@ -35,17 +31,11 @@ public class CameraController : MonoBehaviour {
     {
         instance = this;
     }
-
-    // Use this for initialization
+    
     void Start () {
         changeCameraPos(CameraPositions.Menu);
-        player = PlayerController.instance.gameObject;
 	}
-
-    public void changeToControl()
-    {
-        changeCameraPos(CameraPositions.Control);
-    }
+    
     public void changeToClose()
     {
         changeCameraPos(CameraPositions.Close);
@@ -64,39 +54,25 @@ public class CameraController : MonoBehaviour {
         if (pos == CameraPositions.Menu)
         {
             followCamera.gameObject.SetActive(false);
-            onBoardCamera.gameObject.SetActive(false);
             menuCamera.gameObject.SetActive(true);
 
             menuCamera.gameObject.transform.position = menuPos.transform.position;
             actualPos = pos;
         }
-        else if (pos == CameraPositions.Control)
-        {
-            onBoardCamera.gameObject.SetActive(true);
-            followCamera.gameObject.SetActive(false);
-            menuCamera.gameObject.SetActive(false);
-
-            PlayerController.instance.flagObjects.SetActive(false);
-            actualPos = pos;
-        }
         else if (pos == CameraPositions.Close)
         {
             followCamera.gameObject.SetActive(true);
-            onBoardCamera.gameObject.SetActive(false);
             menuCamera.gameObject.SetActive(false);
 
-            followCamera.gameObject.transform.position = closePos.transform.position;
-            PlayerController.instance.flagObjects.SetActive(true);
+            followCamera.gameObject.transform.position = new Vector3(followCamera.gameObject.transform.position.x, closePos.transform.position.y, followCamera.gameObject.transform.position.z);
             actualPos = pos;
         }
         else if (pos == CameraPositions.Far)
         {
             followCamera.gameObject.SetActive(true);
-            onBoardCamera.gameObject.SetActive(false);
             menuCamera.gameObject.SetActive(false);
 
-            followCamera.gameObject.transform.position = farPos.transform.position;
-            PlayerController.instance.flagObjects.SetActive(true);
+            followCamera.gameObject.transform.position = new Vector3(followCamera.gameObject.transform.position.x, farPos.transform.position.y, followCamera.gameObject.transform.position.z);
             actualPos = pos;
         }
     }
@@ -114,7 +90,7 @@ public class CameraController : MonoBehaviour {
 
         if (actualPos == CameraPositions.Close || actualPos == CameraPositions.Far)
         {
-            followCamera.gameObject.transform.position = new Vector3(player.transform.position.x, followCamera.transform.position.y, player.transform.position.z);
+            followCamera.gameObject.transform.position = new Vector3(PlayerController.instance.gameObject.transform.position.x, followCamera.transform.position.y, PlayerController.instance.gameObject.transform.position.z);
         }
     }
 }

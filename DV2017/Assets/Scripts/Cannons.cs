@@ -16,13 +16,9 @@ public class Cannons : MonoBehaviour
     {
         rangeColor = GetComponent<Renderer>();
         if (tag == PlayerController.instance.tag)
-        {
             gameObject.name = PlayerController.instance.name;
-        }
         else
-        {
             gameObject.name = gameObject.GetComponentInParent<EnemyController>().name;
-        }
     }
 
     // Update is called once per frame
@@ -30,21 +26,13 @@ public class Cannons : MonoBehaviour
     {
         shootTimer += Time.deltaTime;
         if (isLeft)
-        {
             sailors = PlayerController.instance.cannonLeft;
-        }
         else if (isRight)
-        {
             sailors = PlayerController.instance.cannonRight;
-        }
         else if (isFront)
-        {
             sailors = PlayerController.instance.cannonFront;
-        }
         else if (isEnemy)
-        {
             sailors = 2;
-        }
 
         if (sailors > 0 && shootTimer > GameManager.instance.FireRateDic[gameObject.name])
         {
@@ -53,9 +41,7 @@ public class Cannons : MonoBehaviour
             else if (sailors == 3)  rangeColor.material.color = Color.green;
         }
         else
-        {
             rangeColor.material.color = Color.red;
-        }
     }
 
     private void OnTriggerEnter(Collider other)

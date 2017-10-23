@@ -17,7 +17,7 @@ public class HealthBarController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		enemyScript = GetComponent<Health>();
-        enemyScript.enemieHealthBar = this;
+        enemyScript.enemyHealthBar = this;
         healthPanel.transform.SetParent(MenuManager.instance.gameHUD.transform, false);
 
         //enemyName = healthPanel.GetComponentInChildren<Text>();

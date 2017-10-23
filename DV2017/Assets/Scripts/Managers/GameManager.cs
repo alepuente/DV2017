@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour {
 
     public Transform startPosition;
     public Transform resetPosition;
+    
 
     private void Awake()
     {
@@ -120,7 +121,6 @@ public class GameManager : MonoBehaviour {
     public void enableFrontCannon()
     {
         PlayerController.instance.frontCannon.SetActive(true);
-        PlayerController.instance.frontPos.gameObject.SetActive(true);
         PlayerController.instance._frontCannonButton1.SetActive(true);
         PlayerController.instance._frontCannonButton2.SetActive(true);
     }

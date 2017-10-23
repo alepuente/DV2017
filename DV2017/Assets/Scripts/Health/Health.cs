@@ -8,10 +8,14 @@ public class Health : MonoBehaviour
     public Image healthBar;
     public float health;
     public float maxHealth;
-    public HealthBarController enemieHealthBar;
+    public HealthBarController enemyHealthBar;
 
     private void Start()
     {
+        if (tag == "Player")
+        {
+             
+        }
         reset();       
     }
 
@@ -35,7 +39,7 @@ public class Health : MonoBehaviour
                 {
                     reset();
                     gameObject.SetActive(false);
-                    enemieHealthBar.healthPanel.SetActive(false);
+                    enemyHealthBar.healthPanel.SetActive(false);
                     EnemyFactory.instance.enemiesAlive--;
                     GameManager.instance.addMoney(name);
                 }

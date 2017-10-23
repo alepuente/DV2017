@@ -103,7 +103,8 @@ public class MenuManager : MonoBehaviour
     public void StartGame()
     {
         gameState = GameState.Game;
-        CameraController.instance.changeToControl();
+        PlayerManager._instance.SpawnPlayer();
+        CameraController.instance.changeToClose();
         menuHUD.SetActive(false);
         gameHUD.SetActive(true);
         pauseHUD.SetActive(false);

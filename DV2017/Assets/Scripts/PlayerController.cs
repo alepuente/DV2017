@@ -22,22 +22,14 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 currentDestination;
     private int maxWaypoint;
-    private NavMeshAgent nav;
 
     private int rudderSailor = 0;
     private int nestSailor = 0;
     public int cannonLeft = 0;
     public int cannonRight = 0;
     public int cannonFront = 0;
-
-    public GameObject flagObjects;
+    
     public GameObject frontCannon;
-
-    public Renderer rudderPos;
-    public Renderer leftPos;
-    public Renderer rightPos;
-    public Renderer frontPos;
-    public Renderer nestPos;
 
     public SMPlayer _stateMachine;
 
@@ -67,7 +59,7 @@ public class PlayerController : MonoBehaviour
 
         MouseController();
 
-        if(_stateMachine.getActualState1() != SMPlayer.States.Iddle && _stateMachine.getActualState2() != SMPlayer.States.Iddle)
+        if (_stateMachine.getActualState1() != SMPlayer.States.Iddle && _stateMachine.getActualState2() != SMPlayer.States.Iddle)
         {
             CameraController.instance.changeToClose();
         }
@@ -78,32 +70,19 @@ public class PlayerController : MonoBehaviour
                 if (frontCannon.active)
                 {
                     cannonFront = 1;
-                    frontPos.material.color = Color.green;
                 }
                 break;
             case SMPlayer.States.LeftCannon:
-                {
-
-                    cannonLeft = 1; leftPos.material.color = Sailor1;
-                }
+                cannonLeft = 1;
                 break;
             case SMPlayer.States.RightCannon:
-                {
-
-                    cannonRight = 1; rightPos.material.color = Sailor1;
-                }
+                cannonRight = 1; 
                 break;
             case SMPlayer.States.Steering:
-                {
-
-                    MouseController(); Patrolling(); rudderPos.material.color = Sailor1;
-                }
+                MouseController(); Patrolling();
                 break;
             case SMPlayer.States.OnNest:
-                {
-
-                    nestSailor = 1; nestPos.material.color = Sailor1; CameraController.instance.changeToFar();
-                }
+                nestSailor = 1; CameraController.instance.changeToFar();
                 break;
             case SMPlayer.States.Iddle:
                 break;
@@ -117,32 +96,19 @@ public class PlayerController : MonoBehaviour
                 if (frontCannon.active)
                 {
                     cannonFront = 1;
-                    frontPos.material.color = Sailor2;
                 }
                 break;
             case SMPlayer.States.LeftCannon:
-                {
-
-                    cannonLeft = 2; leftPos.material.color = Sailor2;
-                }
+                cannonLeft = 2;
                 break;
             case SMPlayer.States.RightCannon:
-                {
-
-                    cannonRight = 2; rightPos.material.color = Sailor2;
-                }
+                cannonRight = 2;
                 break;
             case SMPlayer.States.Steering:
-                {
-
-                    MouseController(); Patrolling(); rudderPos.material.color = Sailor2;
-                }
+                MouseController(); Patrolling();
                 break;
             case SMPlayer.States.OnNest:
-                {
-
-                    nestSailor = 1; nestPos.material.color = Sailor2; CameraController.instance.changeToFar();
-                }
+                nestSailor = 1;  CameraController.instance.changeToFar();
                 break;
             case SMPlayer.States.Iddle:
                 break;
@@ -153,35 +119,13 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void SetState1(int ev)
-    {
-        _stateMachine.SetEvent1((SMPlayer.Events)ev);
-        Debug.Log("SetState1 :" + (SMPlayer.Events)ev);
-        HUDManager.instance.UpdateUI();
-        resetPositions();
-    }
-
-    public void SetState2(int ev)
-    {
-        Debug.Log("SetState2 :" + (SMPlayer.Events)ev);
-        _stateMachine.SetEvent2((SMPlayer.Events)ev);
-        HUDManager.instance.UpdateUI();
-        resetPositions();
-    }
-
-    private void resetPositions()
+    public void resetPositions()
     {
         rudderSailor = 0;
         nestSailor = 0;
         cannonLeft = 0;
         cannonRight = 0;
         cannonFront = 0;
-
-        rudderPos.material.color = Color.red;
-        leftPos.material.color = Color.red;
-        rightPos.material.color = Color.red;
-        frontPos.material.color = Color.red;
-        nestPos.material.color = Color.red;
 
         CameraController.instance.nest = false;
     }
