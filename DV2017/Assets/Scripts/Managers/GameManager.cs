@@ -32,12 +32,7 @@ public class GameManager : MonoBehaviour {
         FireRateDic = new Dictionary<string, float>();
         SpeedDic = new Dictionary<string, float>();
         TurnSpeedDic = new Dictionary<string, float>();
-        RewardDic = new Dictionary<string, int>();
-
-       /* minX = -150;
-        maxX = 150;
-        minZ = -200;
-        maxZ = 200;*/
+        RewardDic = new Dictionary<string, int>();        
 
         DamageDic.Add("Player", 10f);
         DamageDic.Add("boat", 5f);
@@ -117,12 +112,6 @@ public class GameManager : MonoBehaviour {
         HealthDic["ship"] = 20f;
 
         PlayerController.instance.setPositionPlayer(resetPosition);
-    }
-    public void enableFrontCannon()
-    {
-        PlayerController.instance.frontCannon.SetActive(true);
-        PlayerController.instance._frontCannonButton1.SetActive(true);
-        PlayerController.instance._frontCannonButton2.SetActive(true);
     }
 
     public void setStartGamePlayerPos()
