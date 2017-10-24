@@ -9,17 +9,20 @@ public class HUDManager : MonoBehaviour {
     public Button RubberSailor1;
     public Button LeftCannonSailor1;
     public Button RightCannonSailor1;
+    public Button frontCannonButton1;
 
     public Button NestSailor2;
     public Button RubberSailor2;
     public Button LeftCannonSailor2;
     public Button RightCannonSailor2;
+    public Button frontCannonButton2;
 
     public Color ActivePositionSailor1;
     public Color ActivePositionSailor2;
-    
-    Color ResetColorSailor1;
-    Color ResetColorSailor2;
+
+    public Color ResetColorSailor1;
+    public Color ResetColorSailor2;
+
 
     private void Awake()
     {
@@ -35,8 +38,6 @@ public class HUDManager : MonoBehaviour {
 
     private void Start()
     {
-        ResetColorSailor1 = PlayerController.instance.Sailor1;
-        ResetColorSailor2 = PlayerController.instance.Sailor2;
 
         ColorBlock tmp = NestSailor1.colors;
         tmp.pressedColor = ActivePositionSailor1;
@@ -62,6 +63,14 @@ public class HUDManager : MonoBehaviour {
 
         switch (PlayerController.instance._stateMachine.getActualState1())
         {
+            case SMPlayer.States.FrontCannon:
+                {
+                    ColorBlock tmp = LeftCannonSailor1.colors;
+
+                    tmp.normalColor = ActivePositionSailor1;
+                    frontCannonButton1.colors = tmp;
+                }
+                break;
             case SMPlayer.States.LeftCannon:
                 {
                     ColorBlock tmp = LeftCannonSailor1.colors;
@@ -102,6 +111,14 @@ public class HUDManager : MonoBehaviour {
 
         switch (PlayerController.instance._stateMachine.getActualState2())
         {
+            case SMPlayer.States.FrontCannon:
+                {
+                    ColorBlock tmp = LeftCannonSailor1.colors;
+
+                    tmp.normalColor = ActivePositionSailor2;
+                    frontCannonButton2.colors = tmp;
+                }
+                break;
             case SMPlayer.States.LeftCannon:
                 {
                     ColorBlock tmp = LeftCannonSailor1.colors;
@@ -150,11 +167,13 @@ public class HUDManager : MonoBehaviour {
         RubberSailor1.colors = tmp;
         LeftCannonSailor1.colors = tmp;
         RightCannonSailor1.colors = tmp;
+        frontCannonButton1.colors = tmp;
 
         tmp.normalColor = ResetColorSailor2;
         NestSailor2.colors = tmp;
         RubberSailor2.colors = tmp;
         LeftCannonSailor2.colors = tmp;
         RightCannonSailor2.colors = tmp;
-}
+        frontCannonButton2.colors = tmp;
+    }
 }

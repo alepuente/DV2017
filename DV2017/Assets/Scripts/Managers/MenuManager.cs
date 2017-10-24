@@ -178,7 +178,6 @@ public class MenuManager : MonoBehaviour
     public void upgradeFrontCannon()
     {
             GameManager.instance.money -= frontCannonPrice;
-            GameManager.instance.enableFrontCannon();
             frontCannonButton.GetComponentInChildren<Text>().text = "MAX";
             frontCannonPrice = 99999999;
     }
