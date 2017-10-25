@@ -91,13 +91,13 @@ public class PlayerController : MonoBehaviour
         switch (_stateMachine.getActualState2())
         {
             case SMPlayer.States.FrontCannon:
-                cannonFront = 1;
+                cannonFront = 2;
                 break;
             case SMPlayer.States.LeftCannon:
-                cannonLeft = 1;
+                cannonLeft = 2;
                 break;
             case SMPlayer.States.RightCannon:
-                cannonRight = 1;
+                cannonRight = 2;
                 break;
             case SMPlayer.States.Steering:
                 MouseController(); Patrolling();

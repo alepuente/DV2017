@@ -32,7 +32,7 @@ public class Cannons : MonoBehaviour
         else if (isFront)
             sailors = PlayerController.instance.cannonFront;
         else if (isEnemy)
-            sailors = 2;
+            sailors = 3;
 
         if (sailors > 0 && shootTimer > GameManager.instance.FireRateDic[gameObject.name])
         {
