@@ -69,4 +69,9 @@ public class SpawnManager : MonoBehaviour {
     {
         spawnerPoints[Random.Range(0, spawnerPoints.Count)].Spawn();
     }
+
+    public GameObject spawnEnemyAtPoint(Vector3 pos)
+    {
+        return spawnerPoints[Random.Range(0, spawnerPoints.Count)].SpawnTutorialEnemy(pos);
+    }
 }

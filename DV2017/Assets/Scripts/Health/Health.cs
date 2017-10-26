@@ -14,9 +14,9 @@ public class Health : MonoBehaviour
     {
         if (tag == "Player")
         {
-             
+
         }
-        reset();       
+        reset();
     }
 
     public void reset()
@@ -27,7 +27,7 @@ public class Health : MonoBehaviour
 
     private void Update()
     {
-         if (healthBar != null)
+        if (healthBar != null)
         {
             healthBar.fillAmount = health / maxHealth;
         }
@@ -53,6 +53,24 @@ public class Health : MonoBehaviour
         else if (MenuManager.instance.gameState == GameState.Menu)
         {
             reset();
+        }
+        else if(MenuManager.instance.gameState == GameState.Tutorial)
+        {
+            if (health <= 0)
+            {
+                if (tag != "Player")
+                {
+                    reset();
+                    gameObject.SetActive(false);
+                    enemyHealthBar.healthPanel.SetActive(false);
+                    EnemyFactory.instance.enemiesAlive--;
+                    GameManager.instance.addMoney(name);
+                }
+                else
+                {
+                    TutorialManager.instance.ResetTutorial();
+                }
+            }
         }
 
     }

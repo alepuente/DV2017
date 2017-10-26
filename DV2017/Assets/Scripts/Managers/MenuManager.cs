@@ -7,7 +7,8 @@ public enum GameState
 {
     Menu,
     Game,
-    Pause
+    Pause,
+    Tutorial
 }
 
 public class MenuManager : MonoBehaviour

@@ -27,4 +27,13 @@ public class SpawnerEnemy : MonoBehaviour
         aux.gameObject.transform.position = new Vector3(randomPos.x, 0, randomPos.y);
         aux.transform.LookAt(PlayerController.instance.transform.position);
     }
+
+    public GameObject SpawnTutorialEnemy(Vector3 pos)
+    {
+        GameObject aux = EnemyBuilder.instance.Build(enemyTypes[Random.Range(0, enemyTypes.Count)]);
+        aux.gameObject.transform.position = pos;
+        aux.transform.LookAt(PlayerController.instance.transform.position);
+
+        return aux;
+    }
 }
