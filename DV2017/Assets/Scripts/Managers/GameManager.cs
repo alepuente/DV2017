@@ -61,6 +61,15 @@ public class GameManager : MonoBehaviour {
         startPosition = GameObject.FindGameObjectWithTag("Start").transform;
         resetPosition = GameObject.FindGameObjectWithTag("resetPos").transform;
         //PlayerController.instance.setPositionPlayer(resetPosition);
+        
+        if (PlayerPrefs.GetInt("FirstTime") != 1)
+        {
+            PlayerPrefs.SetInt("Upgrade0", 1);
+            PlayerPrefs.SetInt("Upgrade1", 0);
+            PlayerPrefs.SetInt("CurrentShip", 0);
+        }
+        PlayerPrefs.SetInt("FirstTime", 1);
+        PlayerPrefs.Save();
 
     }
 

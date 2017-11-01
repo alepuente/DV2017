@@ -25,10 +25,7 @@ public class PlayerController : MonoBehaviour
     public int cannonRight = 0;
     public int cannonFront = 0;
 
-    public SMPlayer _stateMachine;
-
-    public GameObject _frontCannonButton1;
-    public GameObject _frontCannonButton2; 
+    public SMPlayer _stateMachine;    
 
     private void Awake()
     {
@@ -38,20 +35,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void Start()
-    {
-        switch (_shipType)
-        {
-            case 1:
-                _frontCannonButton1.SetActive(false);
-                _frontCannonButton2.SetActive(false);
-                break;
-            case 2:
-                _frontCannonButton1.SetActive(true);
-                _frontCannonButton2.SetActive(true);
-                break;
-            default:
-                break;
-        }
+    {        
         turnSpeed = GameManager.instance.TurnSpeedDic[tag];
         patrolSpeed = GameManager.instance.SpeedDic[tag];
     }
