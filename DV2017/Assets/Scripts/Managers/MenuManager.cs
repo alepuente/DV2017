@@ -52,7 +52,7 @@ public class MenuManager : MonoBehaviour
         instance = this;
         StartMenu();
 
-        moneyText.text = GameManager.instance.money.ToString();
+        moneyText.text = "Gold: "+GameManager.instance.money.ToString();
         damageButton.GetComponentInChildren<Text>().text = damagePrice.ToString();
         damageAmountText.text = "+" + damageAmount + " Cannons Damage";
 
@@ -82,7 +82,7 @@ public class MenuManager : MonoBehaviour
         else { healthButton.interactable = false; }
 
         enemiesLeft.text = "Enemies Left: " + EnemyFactory.instance.enemiesAlive;
-        moneyText.text = GameManager.instance.money.ToString();
+        moneyText.text = "Gold: " + GameManager.instance.money.ToString();
     }
     #region MainMenu
 
