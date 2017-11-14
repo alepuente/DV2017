@@ -8,9 +8,9 @@ public class Cannons : MonoBehaviour
     public bool isRight = false;
     public bool isFront = false;
     public bool isEnemy = false;
-    public int sailors;
     public float shootTimer;
     public Renderer rangeColor;
+    public bool _sailor;
 
     void Start()
     {
@@ -26,19 +26,38 @@ public class Cannons : MonoBehaviour
     {
         shootTimer += Time.deltaTime;
         if (isLeft)
-            sailors = PlayerController.instance.cannonLeft;
+            if (PlayerController.instance._stateMachine.getActualState1() == SMPlayer.States.LeftCannon || PlayerController.instance._stateMachine.getActualState2() == SMPlayer.States.LeftCannon)
+            {
+                _sailor = true;
+            }
+            else
+            {
+                _sailor = false;
+            }
         else if (isRight)
-            sailors = PlayerController.instance.cannonRight;
+            if (PlayerController.instance._stateMachine.getActualState1() == SMPlayer.States.RightCannon || PlayerController.instance._stateMachine.getActualState2() == SMPlayer.States.RightCannon)
+            {
+                _sailor = true;
+            }
+            else
+            {
+                _sailor = false;
+            }
         else if (isFront)
-            sailors = PlayerController.instance.cannonFront;
+            if (PlayerController.instance._stateMachine.getActualState1() == SMPlayer.States.FrontCannon || PlayerController.instance._stateMachine.getActualState2() == SMPlayer.States.FrontCannon)
+            {
+                _sailor = true;
+            }
+            else
+            {
+                _sailor = false;
+            }
         else if (isEnemy)
-            sailors = 3;
+                        _sailor = true;
 
-        if (sailors > 0 && shootTimer > GameManager.instance.FireRateDic[gameObject.name])
+        if (_sailor && shootTimer > GameManager.instance.FireRateDic[gameObject.name])
         {
-            if(sailors == 1)        rangeColor.material.color = HUDManager.instance.ResetColorSailor1;
-            else if (sailors == 2)  rangeColor.material.color = HUDManager.instance.ResetColorSailor2;
-            else if (sailors == 3)  rangeColor.material.color = Color.green;
+              rangeColor.material.color = Color.green;
         }
         else
             rangeColor.material.color = Color.red;
@@ -46,7 +65,7 @@ public class Cannons : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == 8 && other.tag != gameObject.tag  && sailors > 0 )
+        if (other.gameObject.layer == 8 && other.tag != gameObject.tag  && _sailor)
         {
             if (shootTimer > GameManager.instance.FireRateDic[gameObject.name])
             {
@@ -67,7 +86,7 @@ public class Cannons : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.layer == 8 && other.tag != gameObject.tag && sailors > 0 && shootTimer > GameManager.instance.FireRateDic[gameObject.name])
+        if (other.gameObject.layer == 8 && other.tag != gameObject.tag && _sailor && shootTimer > GameManager.instance.FireRateDic[gameObject.name])
         {
             other.GetComponent<Health>().health = GameManager.instance.calculateDamage(gameObject.name, other.GetComponent<Health>().health);
             shootTimer = 0;

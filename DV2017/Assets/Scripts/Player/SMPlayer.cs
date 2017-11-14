@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SMPlayer : MonoBehaviour {
+public class SMPlayer {
 
 	private int[,] _fsm;
     private States _state1;
