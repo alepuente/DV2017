@@ -24,27 +24,15 @@ public class PlayerManager : MonoBehaviour
             _playerInstance = null;
         }
 
-        if(_playerInstance == null)
+        if (_playerInstance == null)
         {
-        GameObject aux = (GameObject)Instantiate(Resources.Load("Player" + PlayerPrefs.GetInt("CurrentShip")));
-        _playerInstance = aux.GetComponent<PlayerController>();
-        _playerInstance.GetComponent<Health>().healthBar = playerHealthBar;
-        _playerInstance.name = "Player";
-        switch (PlayerPrefs.GetInt("CurrentShip"))
-            {
-                case 0:
-                    HUDManager.instance.frontCannonButton1.gameObject.SetActive(false);
-                    HUDManager.instance.frontCannonButton2.gameObject.SetActive(false);
-                    break;
-                case 1:
-                    HUDManager.instance.frontCannonButton1.gameObject.SetActive(true);
-                    HUDManager.instance.frontCannonButton2.gameObject.SetActive(true);
-                    break;
-                default:
-                    break;
-            }
-        }
-
+            GameObject aux = (GameObject)Instantiate(Resources.Load("Player" + PlayerPrefs.GetInt("CurrentShip")));
+            _playerInstance = aux.GetComponent<PlayerController>();
+            HUDManager.instance.frontCannonButton1.gameObject.SetActive(_playerInstance._frontCannon);
+            HUDManager.instance.frontCannonButton2.gameObject.SetActive(_playerInstance._frontCannon);
+            _playerInstance.GetComponent<Health>().healthBar = playerHealthBar;
+            _playerInstance.name = "Player";
+        }    
     }
 
     public void SetState1(int ev)
