@@ -23,14 +23,18 @@ public class PlayerController : MonoBehaviour
     private bool _anchor;
     private bool _fullSpeed;
     public bool _frontCannon;
+    private Rigidbody _rgb;
 
     public SMPlayer _stateMachine;
+
+    public GameObject _movingIndicator;
 
     private void Awake()
     {
         instance = this;
         //sailorEvent.AddListener(spawnSailor);
         _stateMachine = new SMPlayer();
+        _rgb = GetComponent<Rigidbody>();
     }
 
     private void Start()
@@ -38,6 +42,9 @@ public class PlayerController : MonoBehaviour
         turnSpeed = GameManager.instance.TurnSpeedDic[tag];
         patrolSpeed = GameManager.instance.SpeedDic[tag];
         reset();
+        GameObject aux = (GameObject)Instantiate(Resources.Load("MovingIndicator"));
+        _movingIndicator = aux;
+        _movingIndicator.SetActive(false);
     }
 
     private void Update()
@@ -126,6 +133,8 @@ public class PlayerController : MonoBehaviour
         {
             waypoints.Clear();
             waypoints.Add(InputManager.instance.getSelection());
+            _movingIndicator.SetActive(true);
+            _movingIndicator.transform.position = waypoints[0];
         }
     }
 
@@ -167,6 +176,7 @@ public class PlayerController : MonoBehaviour
             if (Vector3.Distance(tempLocalPosition, tempWaypointPosition) <= minWaypointDistance)
             {
                 waypoints.Remove(waypoints[0]);
+                _movingIndicator.SetActive(false);
             }
 
             // Set the destination for the agent
