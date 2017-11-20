@@ -55,12 +55,21 @@ public class GameManager : MonoBehaviour {
         TurnSpeedDic.Add("boat", 1.5f);
         TurnSpeedDic.Add("ship", 1f);
         
-        RewardDic.Add("boat", 100);
-        RewardDic.Add("ship", 200);
+        RewardDic.Add("boat", 150);
+        RewardDic.Add("ship", 250);
 
         startPosition = GameObject.FindGameObjectWithTag("Start").transform;
         resetPosition = GameObject.FindGameObjectWithTag("resetPos").transform;
         //PlayerController.instance.setPositionPlayer(resetPosition);
+        
+        if (PlayerPrefs.GetInt("FirstTime") != 1)
+        {
+            PlayerPrefs.SetInt("Upgrade0", 1);
+            PlayerPrefs.SetInt("Upgrade1", 0);
+            PlayerPrefs.SetInt("CurrentShip", 0);
+        }
+        PlayerPrefs.SetInt("FirstTime", 1);
+        PlayerPrefs.Save();
 
     }
 

@@ -25,10 +25,7 @@ public class MenuManager : MonoBehaviour
     public Text damageAmountText;
     public Button damageButton;
     public int damagePrice;
-    public float damageAmount;
-
-    public Button frontCannonButton;
-    public int frontCannonPrice;
+    public float damageAmount;    
 
     public Text speedAmountText;
     public Button speedButton;
@@ -55,7 +52,7 @@ public class MenuManager : MonoBehaviour
         instance = this;
         StartMenu();
 
-        moneyText.text = GameManager.instance.money.ToString();
+        moneyText.text = "Gold: "+GameManager.instance.money.ToString();
         damageButton.GetComponentInChildren<Text>().text = damagePrice.ToString();
         damageAmountText.text = "+" + damageAmount + " Cannons Damage";
 
@@ -67,17 +64,13 @@ public class MenuManager : MonoBehaviour
 
         healthButton.GetComponentInChildren<Text>().text = healthPrice.ToString();
         healthAmountText.text = "+" + healthAmount + " Max Health";
-
-        frontCannonButton.GetComponentInChildren<Text>().text = frontCannonPrice.ToString();
+        
     }
 
     private void Update()
     {
         if (GameManager.instance.money >= damagePrice) { damageButton.interactable = true; }
         else { damageButton.interactable = false; }
-
-        if (GameManager.instance.money >= frontCannonPrice) { frontCannonButton.interactable = true; }
-        else { frontCannonButton.interactable = false; }
 
         if (GameManager.instance.money >= speedPrice) { speedButton.interactable = true; }
         else { speedButton.interactable = false; }
@@ -89,7 +82,7 @@ public class MenuManager : MonoBehaviour
         else { healthButton.interactable = false; }
 
         enemiesLeft.text = "Enemies Left: " + EnemyFactory.instance.enemiesAlive;
-        moneyText.text = GameManager.instance.money.ToString();
+        moneyText.text = "Gold: " + GameManager.instance.money.ToString();
     }
     #region MainMenu
 
@@ -176,11 +169,7 @@ public class MenuManager : MonoBehaviour
         healthButton.GetComponentInChildren<Text>().text = healthPrice.ToString();
         healthAmountText.text = "+" + healthAmount + " MaxHealth";
     }
-    public void upgradeFrontCannon()
-    {
-            GameManager.instance.money -= frontCannonPrice;
-            frontCannonButton.GetComponentInChildren<Text>().text = "MAX";
-            frontCannonPrice = 99999999;
-    }
+
     #endregion
+
 }

@@ -20,40 +20,31 @@ public class PlayerController : MonoBehaviour
     public float minWaypointDistance = 0.1f;
     public GameObject[] attackPoint;
     public SailorsEvent sailorEvent;
-
-    public int cannonLeft = 0;
-    public int cannonRight = 0;
-    public int cannonFront = 0;
+    private bool _anchor;
+    private bool _fullSpeed;
+    public bool _frontCannon;
+    private Rigidbody _rgb;
 
     public SMPlayer _stateMachine;
 
-    public GameObject _frontCannonButton1;
-    public GameObject _frontCannonButton2; 
+    public GameObject _movingIndicator;
 
     private void Awake()
     {
         instance = this;
         //sailorEvent.AddListener(spawnSailor);
         _stateMachine = new SMPlayer();
+        _rgb = GetComponent<Rigidbody>();
     }
 
     private void Start()
     {
-        switch (_shipType)
-        {
-            case 1:
-                _frontCannonButton1.SetActive(false);
-                _frontCannonButton2.SetActive(false);
-                break;
-            case 2:
-                _frontCannonButton1.SetActive(true);
-                _frontCannonButton2.SetActive(true);
-                break;
-            default:
-                break;
-        }
         turnSpeed = GameManager.instance.TurnSpeedDic[tag];
         patrolSpeed = GameManager.instance.SpeedDic[tag];
+        reset();
+        GameObject aux = (GameObject)Instantiate(Resources.Load("MovingIndicator"));
+        _movingIndicator = aux;
+        _movingIndicator.SetActive(false);
     }
 
     private void Update()
@@ -65,16 +56,18 @@ public class PlayerController : MonoBehaviour
             CameraController.instance.changeToClose();
         }
 
+        if (_stateMachine.getActualState1() != SMPlayer.States.Steering && _stateMachine.getActualState2() != SMPlayer.States.Steering)
+        {
+            _fullSpeed = false;
+        }
+
         switch (_stateMachine.getActualState1())
         {
             case SMPlayer.States.FrontCannon:
-                cannonFront = 1;
                 break;
             case SMPlayer.States.LeftCannon:
-                cannonLeft = 1;
                 break;
             case SMPlayer.States.RightCannon:
-                cannonRight = 1;
                 break;
             case SMPlayer.States.Steering:
                 MouseController(); Patrolling();
@@ -91,13 +84,10 @@ public class PlayerController : MonoBehaviour
         switch (_stateMachine.getActualState2())
         {
             case SMPlayer.States.FrontCannon:
-                cannonFront = 2;
                 break;
             case SMPlayer.States.LeftCannon:
-                cannonLeft = 2;
                 break;
             case SMPlayer.States.RightCannon:
-                cannonRight = 2;
                 break;
             case SMPlayer.States.Steering:
                 MouseController(); Patrolling();
@@ -110,27 +100,30 @@ public class PlayerController : MonoBehaviour
             default:
                 break;
         }
+        if (!_anchor)
+        {
+            if (_fullSpeed)
+                transform.position += transform.forward * patrolSpeed * Time.deltaTime;
+            else
+                transform.position += transform.forward * patrolSpeed/1.5f * Time.deltaTime;
+        }
 
 
     }
 
     public void resetPositions()
     {
-        cannonLeft = 0;
-        cannonRight = 0;
-        cannonFront = 0;
-
         CameraController.instance.nest = false;
     }
 
     public void reset()
     {
+        _anchor = true;
         resetPositions();
         waypoints.Clear();
         _stateMachine.resetStates();
         GetComponent<Rigidbody>().isKinematic = true;
         GetComponent<Rigidbody>().isKinematic = false;
-        transform.position = new Vector3(0f, 0.81f, 0f);
         transform.rotation = Quaternion.identity;
     }
 
@@ -140,6 +133,8 @@ public class PlayerController : MonoBehaviour
         {
             waypoints.Clear();
             waypoints.Add(InputManager.instance.getSelection());
+            _movingIndicator.SetActive(true);
+            _movingIndicator.transform.position = waypoints[0];
         }
     }
 
@@ -159,6 +154,8 @@ public class PlayerController : MonoBehaviour
 
     public void Patrolling()
     {
+        _fullSpeed = true;
+        _anchor = false;
         if (waypoints.Count > 0)
         {
             // Create two Vector3 variables, one to buffer the ai agents local position, the other to
@@ -179,17 +176,17 @@ public class PlayerController : MonoBehaviour
             if (Vector3.Distance(tempLocalPosition, tempWaypointPosition) <= minWaypointDistance)
             {
                 waypoints.Remove(waypoints[0]);
+                _movingIndicator.SetActive(false);
             }
 
             // Set the destination for the agent
             // The navmesh agent is going to do the rest of the work
             if (waypoints.Count > 0)
             {
-                transform.position += transform.forward * patrolSpeed * Time.deltaTime;
                 Vector3 targetDir = waypoints[0] - transform.position;
                 float step = Time.deltaTime / Mathf.PI;
                 Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, step * turnSpeed, 0.0f);
-                transform.rotation = Quaternion.LookRotation(new Vector3(newDir.x, 0, newDir.z));             
+                transform.rotation = Quaternion.LookRotation(new Vector3(newDir.x, 0, newDir.z));
             }
         }
     }
