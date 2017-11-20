@@ -36,8 +36,8 @@ public class Cannons : MonoBehaviour
 
         if (sailors > 0 && shootTimer > GameManager.instance.FireRateDic[gameObject.name])
         {
-            if(sailors == 1)        rangeColor.material.color = HUDManager.instance.ResetColorSailor1;
-            else if (sailors == 2)  rangeColor.material.color = HUDManager.instance.ResetColorSailor2;
+            if(sailors == 1)        rangeColor.material.color = HUDManager.instance.ActivePositionSailor1;
+            else if (sailors == 2)  rangeColor.material.color = HUDManager.instance.ActivePositionSailor2;
             else if (sailors == 3)  rangeColor.material.color = Color.green;
         }
         else
