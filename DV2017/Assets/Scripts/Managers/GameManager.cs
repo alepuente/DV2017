@@ -110,6 +110,7 @@ public class GameManager : MonoBehaviour {
         CameraController.instance.changeToMenu();
         MenuManager.instance.StartMenu();
         SpawnManager.instance.maxEnemies = 3;
+        HUDManager.instance.cleanButtons();
 
         DamageDic["boat"] = 5f;
         DamageDic["ship"] = 10f;
