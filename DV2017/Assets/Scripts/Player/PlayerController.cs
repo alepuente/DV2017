@@ -23,18 +23,28 @@ public class PlayerController : MonoBehaviour
     private bool _anchor;
     private bool _fullSpeed;
     public bool _frontCannon;
-    private Rigidbody _rgb;
 
     public SMPlayer _stateMachine;
 
     public GameObject _movingIndicator;
+
+    [SerializeField]
+    Rigidbody _rgb;
 
     private void Awake()
     {
         instance = this;
         //sailorEvent.AddListener(spawnSailor);
         _stateMachine = new SMPlayer();
+
         _rgb = GetComponent<Rigidbody>();
+        _rgb.velocity = Vector3.zero;
+    }
+
+    public void ResetRGB()
+    {
+        _rgb.isKinematic = true;
+        _rgb.isKinematic = false;
     }
 
     private void Start()
@@ -103,9 +113,16 @@ public class PlayerController : MonoBehaviour
         if (!_anchor)
         {
             if (_fullSpeed)
+            {
                 transform.position += transform.forward * patrolSpeed * Time.deltaTime;
-            else
+                //_rgb.AddForce(transform.forward * patrolSpeed);
+                //transform.Translate(transform.forward * patrolSpeed * Time.deltaTime);
+            }
+            else{
                 transform.position += transform.forward * patrolSpeed/1.5f * Time.deltaTime;
+                //_rgb.AddForce(transform.forward * patrolSpeed / 1.5f);
+                //transform.Translate(transform.forward * patrolSpeed / 1.5f * Time.deltaTime);
+            }
         }
 
 
