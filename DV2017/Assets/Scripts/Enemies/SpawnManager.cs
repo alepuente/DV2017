@@ -59,7 +59,7 @@ public class SpawnManager : MonoBehaviour {
                     GameManager.instance.updateSteering("ship", 0.1f);
                     GameManager.instance.updateMaxHeatlh("boat", 1f);
                     GameManager.instance.updateMaxHeatlh("ship", 2f);
-                    PlayerController.instance.GetComponent<Health>().reset();
+                    //PlayerController.instance.GetComponent<Health>().reset();
                 }
             }
         } 

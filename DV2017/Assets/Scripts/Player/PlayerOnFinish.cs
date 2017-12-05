@@ -12,7 +12,9 @@ public class PlayerOnFinish : MonoBehaviour
             if (timer > 1)
             {
                 GameManager.instance.resetGame();
+                LevelControlScript.instance.youWin();
                 Debug.Log("<color=red>PLAYER ON FINISH!</color>");
+                timer = 0;
             }
         }
     }
