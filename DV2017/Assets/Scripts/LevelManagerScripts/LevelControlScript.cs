@@ -12,7 +12,9 @@ public class LevelControlScript : MonoBehaviour
     public int currentLevel = 1;
 
     public string[] levels;
+    public int[] startsPerLevel;
 
+    public int currentLevelStarsCount = 0;
 
     void Start()
     {
@@ -21,27 +23,34 @@ public class LevelControlScript : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(this.gameObject);
         }
-        else Destroy(gameObject);                
+        else Destroy(gameObject);
+
+        startsPerLevel = new int[levels.Length];
+        for (int i = 0; i < startsPerLevel.Length; i++)
+        {
+            startsPerLevel[i] = 0;
+        }  
     }
 
     public void youWin()
     {
         Debug.Log("<color=green>YOU WIN!</color>");
+
         if(currentLevel >= levelPassed)
             levelPassed++;
 
-        Invoke("loadMainMenu", 1f);
-    }
+        currentLevelStarsCount = 3 - GameObject.FindGameObjectsWithTag("Chest").Length;
+        if (currentLevelStarsCount > 3) currentLevelStarsCount = 3;
+        if (currentLevelStarsCount < 0) currentLevelStarsCount = 0;
 
-    public void youLose()
-    {
-        Debug.Log("<color=red>YOU LOSE!</color>");
+        if (startsPerLevel[currentLevel - 1] < currentLevelStarsCount) startsPerLevel[currentLevel - 1] = currentLevelStarsCount;
+
+
         Invoke("loadMainMenu", 1f);
     }
 
     void loadMainMenu()
     {
-        SceneManager.UnloadSceneAsync(levels[currentLevel - 1]);
         GameManager.instance.resetGame();
     }
 
@@ -49,5 +58,13 @@ public class LevelControlScript : MonoBehaviour
     {
         currentLevel = index;
         SceneManager.LoadScene(levels[currentLevel - 1], LoadSceneMode.Additive);
+    }
+
+    public void ClearLevels()
+    {
+        currentLevelStarsCount = 0;
+
+        if(SceneManager.GetSceneByName(levels[currentLevel - 1]).buildIndex != -1)
+            SceneManager.UnloadSceneAsync(levels[currentLevel - 1]);
     }
 }

@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     Rigidbody _rgb;
 
+
+
     private void Awake()
     {
         instance = this;
@@ -144,6 +146,7 @@ public class PlayerController : MonoBehaviour
         transform.rotation = Quaternion.identity;
     }
 
+
     public void MouseController()
     {
         if (InputManager.instance.getSelection() != Vector3.zero)
@@ -210,9 +213,12 @@ public class PlayerController : MonoBehaviour
 
     public void setPositionPlayer(Transform newPos)
     {
-        gameObject.transform.position = newPos.position;
+        if(newPos != null)
+        {
+            gameObject.transform.position = newPos.position;
 
-        Vector3 rot = newPos.rotation.eulerAngles;
-        gameObject.transform.Rotate(rot);
+            Vector3 rot = newPos.rotation.eulerAngles;
+            gameObject.transform.Rotate(rot);
+        }        
     }
 }
