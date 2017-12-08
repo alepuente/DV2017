@@ -16,7 +16,7 @@ public class ChestCountOnButton : MonoBehaviour
         if (button.IsInteractable())
         {
             countText.gameObject.SetActive(true);
-            countText.text = LevelControlScript.instance.startsPerLevel[level - 1].ToString();
+            countText.text = LevelControlScript.instance.startsPerLevel[level - 1].ToString() + "/3";
         }
         else
         {

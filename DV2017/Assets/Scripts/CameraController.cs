@@ -55,15 +55,19 @@ public class CameraController : MonoBehaviour
         if (pos == CameraPositions.Menu)
         {
             mainCamera.gameObject.transform.position = menuPos.transform.position;
+            actualPos = CameraPositions.Menu;
+            //mainCamera.gameObject.transform.position = new Vector3(menuPos.transform.position.x, menuPos.transform.position.y, menuPos.transform.position.z);
             mainCamera.gameObject.transform.rotation = menuPos.transform.rotation;
         }
         else if (pos == CameraPositions.Close)
         {
+            actualPos = CameraPositions.Close;
             mainCamera.gameObject.transform.position = new Vector3(mainCamera.gameObject.transform.position.x, closePos.transform.position.y, mainCamera.gameObject.transform.position.z);
             mainCamera.gameObject.transform.rotation = closePos.transform.rotation;
         }
         else if (pos == CameraPositions.Far)
         {
+            actualPos = CameraPositions.Far;
             mainCamera.gameObject.transform.position = new Vector3(mainCamera.gameObject.transform.position.x, farPos.transform.position.y, mainCamera.gameObject.transform.position.z);
             mainCamera.gameObject.transform.rotation = farPos.transform.rotation;
         }
@@ -84,7 +88,7 @@ public class CameraController : MonoBehaviour
             if (actualPos == CameraPositions.Close || actualPos == CameraPositions.Far)
             {
                 mainCamera.gameObject.transform.position = new Vector3(PlayerController.instance.gameObject.transform.position.x, mainCamera.transform.position.y, PlayerController.instance.gameObject.transform.position.z);
-            }
+            }           
         }
     }
 }
