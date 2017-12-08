@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CameraController : MonoBehaviour {
+public class CameraController : MonoBehaviour
+{
 
     public static CameraController instance;
-    
+
     public GameObject closePos;
     public GameObject farPos;
     public GameObject menuPos;
 
-    public Camera followCamera;
-    public Camera menuCamera;
-    
+    public Camera mainCamera;
+
     private CameraPositions actualPos;
 
     public bool nest;
@@ -31,11 +31,12 @@ public class CameraController : MonoBehaviour {
     {
         instance = this;
     }
-    
-    void Start () {
+
+    void Start()
+    {
         changeCameraPos(CameraPositions.Menu);
-	}
-    
+    }
+
     public void changeToClose()
     {
         changeCameraPos(CameraPositions.Close);
@@ -53,27 +54,18 @@ public class CameraController : MonoBehaviour {
     {
         if (pos == CameraPositions.Menu)
         {
-            followCamera.gameObject.SetActive(false);
-            menuCamera.gameObject.SetActive(true);
-
-            menuCamera.gameObject.transform.position = menuPos.transform.position;
-            actualPos = pos;
+            mainCamera.gameObject.transform.position = menuPos.transform.position;
+            mainCamera.gameObject.transform.rotation = menuPos.transform.rotation;
         }
         else if (pos == CameraPositions.Close)
         {
-            followCamera.gameObject.SetActive(true);
-            menuCamera.gameObject.SetActive(false);
-
-            followCamera.gameObject.transform.position = new Vector3(followCamera.gameObject.transform.position.x, closePos.transform.position.y, followCamera.gameObject.transform.position.z);
-            actualPos = pos;
+            mainCamera.gameObject.transform.position = new Vector3(mainCamera.gameObject.transform.position.x, closePos.transform.position.y, mainCamera.gameObject.transform.position.z);
+            mainCamera.gameObject.transform.rotation = closePos.transform.rotation;
         }
         else if (pos == CameraPositions.Far)
         {
-            followCamera.gameObject.SetActive(true);
-            menuCamera.gameObject.SetActive(false);
-
-            followCamera.gameObject.transform.position = new Vector3(followCamera.gameObject.transform.position.x, farPos.transform.position.y, followCamera.gameObject.transform.position.z);
-            actualPos = pos;
+            mainCamera.gameObject.transform.position = new Vector3(mainCamera.gameObject.transform.position.x, farPos.transform.position.y, mainCamera.gameObject.transform.position.z);
+            mainCamera.gameObject.transform.rotation = farPos.transform.rotation;
         }
     }
 
@@ -87,10 +79,12 @@ public class CameraController : MonoBehaviour {
         {
             nestButton.interactable = false;
         }
-
-        if (actualPos == CameraPositions.Close || actualPos == CameraPositions.Far)
+        if (PlayerController.instance != null)
         {
-            followCamera.gameObject.transform.position = new Vector3(PlayerController.instance.gameObject.transform.position.x, followCamera.transform.position.y, PlayerController.instance.gameObject.transform.position.z);
+            if (actualPos == CameraPositions.Close || actualPos == CameraPositions.Far)
+            {
+                mainCamera.gameObject.transform.position = new Vector3(PlayerController.instance.gameObject.transform.position.x, mainCamera.transform.position.y, PlayerController.instance.gameObject.transform.position.z);
+            }
         }
     }
 }
