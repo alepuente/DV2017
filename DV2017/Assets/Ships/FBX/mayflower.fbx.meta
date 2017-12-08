@@ -1,0 +1,296 @@
+fileFormatVersion: 2
+guid: 90196e93f5a91a5468144f30ceb3351d
+timeCreated: 1512683557
+licenseType: Free
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: anchor
+    100002: back edging
+    100004: beak
+    100006: beak posts
+    100008: bell
+    100010: blocks rigging
+    100012: Camera
+    100014: climbing rails
+    100016: doors
+    100018: flags
+    100020: front mast block extra
+    100022: hatches
+    100024: hinges
+    100026: hull
+    100028: hull edgng
+    100030: ladders
+    100032: Lamp.000
+    100034: Lamp.001
+    100036: Lamp.006
+    100038: mast extra
+    100040: mast rope
+    100042: masts
+    100044: masts blocks
+    100046: //RootNode
+    100048: peak sides
+    100050: pumps
+    100052: rail posts
+    100054: railing
+    100056: rear spar block
+    100058: rear window blocks
+    100060: rigging
+    100062: rigging boards
+    100064: rope extra
+    100066: rowing boat
+    100068: rudder
+    100070: sail ties
+    100072: sails
+    100074: side block
+    100076: spar rope
+    100078: striped edging
+    100080: top decks
+    100082: top supports
+    100084: tops
+    100086: window extra
+    100088: windows
+    400000: anchor
+    400002: back edging
+    400004: beak
+    400006: beak posts
+    400008: bell
+    400010: blocks rigging
+    400012: Camera
+    400014: climbing rails
+    400016: doors
+    400018: flags
+    400020: front mast block extra
+    400022: hatches
+    400024: hinges
+    400026: hull
+    400028: hull edgng
+    400030: ladders
+    400032: Lamp.000
+    400034: Lamp.001
+    400036: Lamp.006
+    400038: mast extra
+    400040: mast rope
+    400042: masts
+    400044: masts blocks
+    400046: //RootNode
+    400048: peak sides
+    400050: pumps
+    400052: rail posts
+    400054: railing
+    400056: rear spar block
+    400058: rear window blocks
+    400060: rigging
+    400062: rigging boards
+    400064: rope extra
+    400066: rowing boat
+    400068: rudder
+    400070: sail ties
+    400072: sails
+    400074: side block
+    400076: spar rope
+    400078: striped edging
+    400080: top decks
+    400082: top supports
+    400084: tops
+    400086: window extra
+    400088: windows
+    2000000: Camera
+    2300000: anchor
+    2300002: back edging
+    2300004: beak
+    2300006: beak posts
+    2300008: bell
+    2300010: blocks rigging
+    2300012: climbing rails
+    2300014: doors
+    2300016: flags
+    2300018: front mast block extra
+    2300020: hatches
+    2300022: hinges
+    2300024: hull
+    2300026: hull edgng
+    2300028: ladders
+    2300030: mast extra
+    2300032: mast rope
+    2300034: masts
+    2300036: masts blocks
+    2300038: peak sides
+    2300040: pumps
+    2300042: rail posts
+    2300044: railing
+    2300046: rear spar block
+    2300048: rear window blocks
+    2300050: rigging
+    2300052: rigging boards
+    2300054: rope extra
+    2300056: rowing boat
+    2300058: rudder
+    2300060: sail ties
+    2300062: sails
+    2300064: side block
+    2300066: spar rope
+    2300068: striped edging
+    2300070: top decks
+    2300072: top supports
+    2300074: tops
+    2300076: window extra
+    2300078: windows
+    3300000: anchor
+    3300002: back edging
+    3300004: beak
+    3300006: beak posts
+    3300008: bell
+    3300010: blocks rigging
+    3300012: climbing rails
+    3300014: doors
+    3300016: flags
+    3300018: front mast block extra
+    3300020: hatches
+    3300022: hinges
+    3300024: hull
+    3300026: hull edgng
+    3300028: ladders
+    3300030: mast extra
+    3300032: mast rope
+    3300034: masts
+    3300036: masts blocks
+    3300038: peak sides
+    3300040: pumps
+    3300042: rail posts
+    3300044: railing
+    3300046: rear spar block
+    3300048: rear window blocks
+    3300050: rigging
+    3300052: rigging boards
+    3300054: rope extra
+    3300056: rowing boat
+    3300058: rudder
+    3300060: sail ties
+    3300062: sails
+    3300064: side block
+    3300066: spar rope
+    3300068: striped edging
+    3300070: top decks
+    3300072: top supports
+    3300074: tops
+    3300076: window extra
+    3300078: windows
+    4300000: masts blocks
+    4300002: top decks
+    4300004: peak sides
+    4300006: rail posts
+    4300008: doors
+    4300010: window extra
+    4300012: rudder
+    4300014: rope extra
+    4300016: ladders
+    4300018: hatches
+    4300020: railing
+    4300022: front mast block extra
+    4300024: mast extra
+    4300026: flags
+    4300028: mast rope
+    4300030: sails
+    4300032: tops
+    4300034: masts
+    4300036: back edging
+    4300038: pumps
+    4300040: rear window blocks
+    4300042: top supports
+    4300044: rear spar block
+    4300046: anchor
+    4300048: bell
+    4300050: climbing rails
+    4300052: hull
+    4300054: side block
+    4300056: rigging boards
+    4300058: beak posts
+    4300060: beak
+    4300062: hinges
+    4300064: windows
+    4300066: striped edging
+    4300068: rigging
+    4300070: rowing boat
+    4300072: sail ties
+    4300074: spar rope
+    4300076: blocks rigging
+    4300078: hull edgng
+    10800000: Lamp.000
+    10800002: Lamp.001
+    10800004: Lamp.006
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

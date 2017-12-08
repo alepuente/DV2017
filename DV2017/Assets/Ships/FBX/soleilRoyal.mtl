@@ -1,0 +1,269 @@
+# Blender MTL File: 'soleilRoyal.blend'
+# Material Count: 24
+
+newmtl acier
+Ns 103.921569
+Ka 0.380703 0.380703 0.380703
+Kd 0.136781 0.147174 0.079141
+Ks 0.171092 0.185443 0.187867
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl acier_acier.jpg
+Ns 103.921569
+Ka 0.380703 0.380703 0.380703
+Kd 0.136781 0.147174 0.079141
+Ks 0.171092 0.185443 0.187867
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd textures\acier.jpg
+
+newmtl bandesDeRis
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.100000 0.100000 0.100000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd C:\Users\Alenko\bounty\blend\textures\bandeRis.jpg
+
+newmtl boisClair
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.560000 0.512972 0.311348
+Ks 0.400000 0.400000 0.400000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd textures\boisFonce.jpg
+map_Bump -bm 0.100000 textures\\boisFonce_hn.jpg
+
+newmtl boisTresFonce
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.058754 0.046164 0.033574
+Ks 0.029911 0.029911 0.029911
+Ke 0.057732 0.045361 0.032990
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd textures\boisFonce.jpg
+map_Bump -bm 0.200000 textures\\boisFonce_hn.jpg
+map_Ns textures\\boisFonce.jpg
+
+newmtl boisTresFonce_boisFonce_mn.jpg
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.058754 0.046164 0.033574
+Ks 0.029911 0.029911 0.029911
+Ke 0.057732 0.045361 0.032990
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd textures\boisFonce_hn.jpg
+map_Bump -bm 0.200000 textures\\boisFonce_hn.jpg
+map_Ns textures\\boisFonce.jpg
+
+newmtl brun
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.098117 0.072471 0.035676
+Ks 0.300000 0.300000 0.300000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl brun_brun.jpg
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.098117 0.072471 0.035676
+Ks 0.300000 0.300000 0.300000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd textures\brun.jpg
+
+newmtl coqueBleue
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.063965 0.042897 0.194346
+Ks 0.290936 0.290936 0.290936
+Ke 0.031982 0.021449 0.097173
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd textures\bleu.jpg
+
+newmtl coqueBois
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.279000 0.216000 0.153000
+Ks 0.200000 0.200000 0.200000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd textures\boisFonce.jpg
+map_Bump -bm 0.100000 textures\\boisFonce_hn.jpg
+
+newmtl coqueBois_NONE
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.279000 0.216000 0.153000
+Ks 0.200000 0.200000 0.200000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Bump -bm 0.100000 textures\\boisFonce_hn.jpg
+map_Kd textures\\boisFonce.jpg
+
+newmtl coqueBois_bleu.jpg
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.279000 0.216000 0.153000
+Ks 0.200000 0.200000 0.200000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd textures\bleu.jpg
+map_Bump -bm 0.100000 textures\\boisFonce_hn.jpg
+
+newmtl coqueBois_boisFonce_mn.jpg
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.279000 0.216000 0.153000
+Ks 0.200000 0.200000 0.200000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd textures\boisFonce_hn.jpg
+map_Bump -bm 0.100000 textures\\boisFonce_hn.jpg
+
+newmtl cordage
+Ns 194.117647
+Ka 1.000000 1.000000 1.000000
+Kd 0.682500 0.658000 0.584500
+Ks 0.100000 0.100000 0.100000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl cordage_cordage.jpg
+Ns 194.117647
+Ka 1.000000 1.000000 1.000000
+Kd 0.682500 0.658000 0.584500
+Ks 0.100000 0.100000 0.100000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd textures\cordage.jpg
+
+newmtl dorure
+Ns 96.078431
+Ka 0.710302 0.710302 0.710302
+Kd 0.491264 0.471161 0.117149
+Ks 0.698421 0.698421 0.698421
+Ke 0.196506 0.188464 0.046859
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl drapeau
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.757328 0.757328 0.757328
+Ks 0.100000 0.100000 0.100000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd \aufs\devsave\claude\documents\Blender\soleil\textures\fleurDeLys.jpg
+
+newmtl flamme
+Ns 490.196078
+Ka 1.000000 1.000000 1.000000
+Kd 0.973492 0.923373 0.094123
+Ks 1.000000 1.000000 1.000000
+Ke 0.973492 0.923373 0.094123
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl ponts
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.370661 0.290578 0.077029
+Ks 0.200000 0.200000 0.200000
+Ke 0.092665 0.072645 0.019257
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd textures\plancher.jpg
+
+newmtl ponts_NONE
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.370661 0.290578 0.077029
+Ks 0.200000 0.200000 0.200000
+Ke 0.092665 0.072645 0.019257
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd textures\\plancher.jpg
+
+newmtl vitre
+Ns 96.078431
+Ka 0.096972 0.096972 0.096972
+Kd 0.143531 0.177715 0.163748
+Ks 0.234554 0.234554 0.234554
+Ke 0.056966 0.070534 0.064991
+Ni 1.000000
+d 0.648939
+illum 5
+
+newmtl voile
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.100000 0.100000 0.100000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd C:\Users\Alenko\bounty\blend\textures\voile.jpg
+
+newmtl voile_NONE
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.100000 0.100000 0.100000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\Alenko\\bounty\\blend\\textures\\voile.jpg
+
+newmtl voile_bandeRis.jpg
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.100000 0.100000 0.100000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd C:\Users\Alenko\bounty\blend\textures\bandeRis.jpg
