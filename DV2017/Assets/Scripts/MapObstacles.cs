@@ -9,7 +9,16 @@ public class MapObstacles : MonoBehaviour {
     {
         if (other.gameObject.tag == "Player" && other.gameObject.layer == 8)
         {
-                PlayerController.instance.gameObject.GetComponent<Health>().health = GameManager.instance.calculateDamage("Limit", PlayerController.instance.gameObject.GetComponent<Health>().health);
+                PlayerController.instance.gameObject.GetComponent<Health>().health = 
+                    GameManager.instance.calculateDamage("Limit", PlayerController.instance.gameObject.GetComponent<Health>().health);
+        }
+    }
+
+    private void OnCollisionExit(Collision other)
+    {
+        if (other.gameObject.tag == "Player" && other.gameObject.layer == 8)
+        {
+            PlayerController.instance.ResetRGB();
         }
     }
 }

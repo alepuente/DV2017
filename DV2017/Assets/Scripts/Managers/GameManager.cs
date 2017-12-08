@@ -58,8 +58,8 @@ public class GameManager : MonoBehaviour {
         RewardDic.Add("boat", 150);
         RewardDic.Add("ship", 250);
 
-        startPosition = GameObject.FindGameObjectWithTag("Start").transform;
-        resetPosition = GameObject.FindGameObjectWithTag("resetPos").transform;
+        //startPosition = GameObject.FindGameObjectWithTag("Start").transform;
+        //resetPosition = GameObject.FindGameObjectWithTag("resetPos").transform;
         //PlayerController.instance.setPositionPlayer(resetPosition);
         
         if (PlayerPrefs.GetInt("FirstTime") != 1)
@@ -110,6 +110,7 @@ public class GameManager : MonoBehaviour {
         CameraController.instance.changeToMenu();
         MenuManager.instance.StartMenu();
         SpawnManager.instance.maxEnemies = 3;
+        HUDManager.instance.cleanButtons();
 
         DamageDic["boat"] = 5f;
         DamageDic["ship"] = 10f;
@@ -125,6 +126,12 @@ public class GameManager : MonoBehaviour {
 
     public void setStartGamePlayerPos()
     {
+        Invoke("setStartPosition", .5f);
+    }
+    void setStartPosition()
+    {
+        startPosition = GameObject.FindGameObjectWithTag("Start").transform;
+        resetPosition = GameObject.FindGameObjectWithTag("resetPos").transform;
         PlayerController.instance.setPositionPlayer(startPosition);
     }
 }

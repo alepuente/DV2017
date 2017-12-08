@@ -19,9 +19,12 @@ public class HUDManager : MonoBehaviour {
 
     public Color ActivePositionSailor1;
     public Color ActivePositionSailor2;
+    public Color DisablePositionSailor1;
+    public Color DisablePositionSailor2;
 
-    public Color ResetColorSailor1;
-    public Color ResetColorSailor2;
+    public Color StandByColorButton;
+
+    public ColorBlock aux;
 
 
     private void Awake()
@@ -35,26 +38,9 @@ public class HUDManager : MonoBehaviour {
             Destroy(gameObject);
         }
     }
-
-    private void Start()
+    private void OnEnable()
     {
-
-        ColorBlock tmp = NestSailor1.colors;
-        tmp.pressedColor = ActivePositionSailor1;
-        tmp.highlightedColor = ActivePositionSailor1;
-        NestSailor1.colors = tmp;
-        RubberSailor1.colors = tmp;
-        LeftCannonSailor1.colors = tmp;
-        RightCannonSailor1.colors = tmp;
-
-        tmp = NestSailor2.colors;
-        tmp.pressedColor = ActivePositionSailor2;
-        tmp.highlightedColor = ActivePositionSailor2;
-        NestSailor2.colors = tmp;
-        RubberSailor2.colors = tmp;
-        LeftCannonSailor2.colors = tmp;
-        RightCannonSailor2.colors = tmp;
-
+        cleanButtons();
     }
 
     public void UpdateUI()
@@ -65,42 +51,68 @@ public class HUDManager : MonoBehaviour {
         {
             case SMPlayer.States.FrontCannon:
                 {
-                    ColorBlock tmp = LeftCannonSailor1.colors;
+                    ColorBlock tmp = aux;
 
                     tmp.normalColor = ActivePositionSailor1;
+                    tmp.highlightedColor = ActivePositionSailor1;
                     frontCannonButton1.colors = tmp;
+
+                    tmp.disabledColor = DisablePositionSailor1;               
+                    frontCannonButton2.colors = tmp;
+                    frontCannonButton2.interactable = false;
+
                 }
                 break;
             case SMPlayer.States.LeftCannon:
                 {
-                    ColorBlock tmp = LeftCannonSailor1.colors;
+                    ColorBlock tmp = aux;
 
                     tmp.normalColor = ActivePositionSailor1;
+                    tmp.highlightedColor = ActivePositionSailor1;
                     LeftCannonSailor1.colors = tmp;
+
+                    tmp.disabledColor = DisablePositionSailor1;
+                    LeftCannonSailor2.colors = tmp;
+                    LeftCannonSailor2.interactable = false;
                 }
                 break;
             case SMPlayer.States.RightCannon:
                 {
-                    ColorBlock tmp = LeftCannonSailor1.colors;
+                    ColorBlock tmp = aux;
 
                     tmp.normalColor = ActivePositionSailor1;
+                    tmp.highlightedColor = ActivePositionSailor1;
                     RightCannonSailor1.colors = tmp;
+
+                    tmp.disabledColor = DisablePositionSailor1;
+                    RightCannonSailor2.colors = tmp;
+                    RightCannonSailor2.interactable = false;
                 }
                 break;
             case SMPlayer.States.Steering:
                 {
-                    ColorBlock tmp = LeftCannonSailor1.colors;
+                    ColorBlock tmp = aux;
 
                     tmp.normalColor = ActivePositionSailor1;
+                    tmp.highlightedColor = ActivePositionSailor1;
                     RubberSailor1.colors = tmp;
+
+                    tmp.disabledColor = DisablePositionSailor1;
+                    RubberSailor2.colors = tmp;
+                    RubberSailor2.interactable = false;
                 }
                 break;
             case SMPlayer.States.OnNest:
                 {
-                    ColorBlock tmp = LeftCannonSailor1.colors;
+                    ColorBlock tmp = aux;
 
                     tmp.normalColor = ActivePositionSailor1;
+                    tmp.highlightedColor = ActivePositionSailor1;
                     NestSailor1.colors = tmp;
+
+                    tmp.disabledColor = DisablePositionSailor1;
+                    NestSailor2.colors = tmp;
+                    NestSailor2.interactable = false;
                 }
                 break;
             case SMPlayer.States.Iddle:
@@ -113,42 +125,67 @@ public class HUDManager : MonoBehaviour {
         {
             case SMPlayer.States.FrontCannon:
                 {
-                    ColorBlock tmp = LeftCannonSailor1.colors;
+                    ColorBlock tmp = aux;
 
                     tmp.normalColor = ActivePositionSailor2;
+                    tmp.highlightedColor = ActivePositionSailor2;
                     frontCannonButton2.colors = tmp;
+
+                    tmp.disabledColor = DisablePositionSailor2;
+                    frontCannonButton1.colors = tmp;
+                    frontCannonButton1.interactable = false;
                 }
                 break;
             case SMPlayer.States.LeftCannon:
                 {
-                    ColorBlock tmp = LeftCannonSailor1.colors;
+                    ColorBlock tmp = aux;
 
                     tmp.normalColor = ActivePositionSailor2;
+                    tmp.highlightedColor = ActivePositionSailor2;
                     LeftCannonSailor2.colors = tmp;
+
+                    tmp.disabledColor = DisablePositionSailor2;
+                    LeftCannonSailor1.colors = tmp;
+                    LeftCannonSailor1.interactable = false;
                 }
                 break;
             case SMPlayer.States.RightCannon:
                 {
-                    ColorBlock tmp = LeftCannonSailor1.colors;
+                    ColorBlock tmp = aux;
 
                     tmp.normalColor = ActivePositionSailor2;
-                    RightCannonSailor2.colors = tmp;                    
+                    tmp.highlightedColor = ActivePositionSailor2;
+                    RightCannonSailor2.colors = tmp;
+
+                    tmp.disabledColor = DisablePositionSailor2;
+                    RightCannonSailor1.colors = tmp;
+                    RightCannonSailor1.interactable = false;
                 }
                 break;
             case SMPlayer.States.Steering:
                 {
-                    ColorBlock tmp = LeftCannonSailor1.colors;
+                    ColorBlock tmp = aux;
 
                     tmp.normalColor = ActivePositionSailor2;
+                    tmp.highlightedColor = ActivePositionSailor2;
                     RubberSailor2.colors = tmp;
+
+                    tmp.disabledColor = DisablePositionSailor2;
+                    RubberSailor1.colors = tmp;
+                    RubberSailor1.interactable = false;
                 }
                 break;
             case SMPlayer.States.OnNest:
                 {
-                    ColorBlock tmp = LeftCannonSailor1.colors;
+                    ColorBlock tmp = aux;
 
                     tmp.normalColor = ActivePositionSailor2;
+                    tmp.highlightedColor = ActivePositionSailor2;
                     NestSailor2.colors = tmp;
+
+                    tmp.disabledColor = DisablePositionSailor2;
+                    NestSailor1.colors = tmp;
+                    NestSailor1.interactable = false;
                 }
                 break;
             case SMPlayer.States.Iddle:
@@ -158,22 +195,30 @@ public class HUDManager : MonoBehaviour {
         }
     }
 
-    void cleanButtons()
+    public void cleanButtons()
     {
-        ColorBlock tmp = NestSailor1.colors;
-        tmp.normalColor = ResetColorSailor1;
+        ColorBlock tmp = aux;
         
         NestSailor1.colors = tmp;
         RubberSailor1.colors = tmp;
         LeftCannonSailor1.colors = tmp;
         RightCannonSailor1.colors = tmp;
         frontCannonButton1.colors = tmp;
-
-        tmp.normalColor = ResetColorSailor2;
         NestSailor2.colors = tmp;
         RubberSailor2.colors = tmp;
         LeftCannonSailor2.colors = tmp;
         RightCannonSailor2.colors = tmp;
         frontCannonButton2.colors = tmp;
+
+        NestSailor1.interactable = true;
+        RubberSailor1.interactable = true;
+        LeftCannonSailor1.interactable = true;
+        RightCannonSailor1.interactable = true;
+        frontCannonButton1.interactable = true;
+        NestSailor2.interactable = true;
+        RubberSailor2.interactable = true;
+        LeftCannonSailor2.interactable = true;
+        RightCannonSailor2.interactable = true;
+        frontCannonButton2.interactable = true;
     }
 }

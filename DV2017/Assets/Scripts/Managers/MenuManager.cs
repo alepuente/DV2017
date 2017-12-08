@@ -46,6 +46,15 @@ public class MenuManager : MonoBehaviour
 
     public GameState gameState;
 
+    [SerializeField]
+    int SpeedUpgradeCount;
+    [SerializeField]
+    int SteeringUpgradeCount;
+    [SerializeField]
+    int CannonDamageUpgradeCount;
+    [SerializeField]
+    int HealthUpgradeCount;
+
     // Use this for initialization
     void Start()
     {
@@ -64,26 +73,33 @@ public class MenuManager : MonoBehaviour
 
         healthButton.GetComponentInChildren<Text>().text = healthPrice.ToString();
         healthAmountText.text = "+" + healthAmount + " Max Health";
+
+        SpeedUpgradeCount = 0;
+        SteeringUpgradeCount = 0;
+        CannonDamageUpgradeCount = 0;
+        HealthUpgradeCount = 0;
         
     }
 
     private void Update()
     {
-        if (GameManager.instance.money >= damagePrice) { damageButton.interactable = true; }
+        if (GameManager.instance.money >= damagePrice && CannonDamageUpgradeCount < 3) { damageButton.interactable = true; }
         else { damageButton.interactable = false; }
 
-        if (GameManager.instance.money >= speedPrice) { speedButton.interactable = true; }
+        if (GameManager.instance.money >= speedPrice && SpeedUpgradeCount < 3) { speedButton.interactable = true; }
         else { speedButton.interactable = false; }
 
-        if (GameManager.instance.money >= turnPrice) { turnButton.interactable = true; }
+        if (GameManager.instance.money >= turnPrice && SteeringUpgradeCount < 3) { turnButton.interactable = true; }
         else { turnButton.interactable = false; }
 
-        if (GameManager.instance.money >= healthPrice) { healthButton.interactable = true; }
+        if (GameManager.instance.money >= healthPrice && HealthUpgradeCount < 3) { healthButton.interactable = true; }
         else { healthButton.interactable = false; }
 
         enemiesLeft.text = "Enemies Left: " + EnemyFactory.instance.enemiesAlive;
         moneyText.text = "Gold: " + GameManager.instance.money.ToString();
     }
+
+
     #region MainMenu
 
 
@@ -133,6 +149,8 @@ public class MenuManager : MonoBehaviour
         Application.Quit();
     }
     #endregion
+
+
     #region Upgrades
     public void upgradeCannonDamage()
     {
@@ -142,24 +160,27 @@ public class MenuManager : MonoBehaviour
         damagePrice += 200;
         damageButton.GetComponentInChildren<Text>().text = damagePrice.ToString();
         damageAmountText.text = "+" + damageAmount + " Cannons Damage";
+        CannonDamageUpgradeCount++;
     }
     public void upgradeSpeed()
     {
         GameManager.instance.money -= speedPrice;
         GameManager.instance.updateSpeed("Player", speedAmount);
-        speedAmount += 1;
+        speedAmount += .3f;
         speedPrice += 150;
         speedButton.GetComponentInChildren<Text>().text = speedPrice.ToString();
         speedAmountText.text = "+" + speedAmount + " Speed";
+        SpeedUpgradeCount++;
     }
     public void upgradeSteering()
     {
         GameManager.instance.money -= turnPrice;
         GameManager.instance.updateSteering("Player", turnAmount);
-        turnAmount += 0.1f;
+        turnAmount += 0.05f;
         turnPrice += 100;
         turnButton.GetComponentInChildren<Text>().text = turnPrice.ToString();
         turnAmountText.text = "+" + turnAmount + " Turn Speed";
+        SteeringUpgradeCount++;
     }
     public void upgradeHealth()
     {
@@ -168,6 +189,7 @@ public class MenuManager : MonoBehaviour
         healthPrice += 100;
         healthButton.GetComponentInChildren<Text>().text = healthPrice.ToString();
         healthAmountText.text = "+" + healthAmount + " MaxHealth";
+        HealthUpgradeCount++;
     }
 
     #endregion
