@@ -122,12 +122,15 @@ public class GameManager : MonoBehaviour {
         HealthDic["ship"] = 20f;
 
         PlayerController.instance.setPositionPlayer(resetPosition);
+
+        LevelControlScript.instance.ClearLevels();
     }
 
     public void setStartGamePlayerPos()
     {
         Invoke("setStartPosition", .5f);
     }
+
     void setStartPosition()
     {
         startPosition = GameObject.FindGameObjectWithTag("Start").transform;
