@@ -8,7 +8,7 @@ public class LevelControlScript : MonoBehaviour
 {
     public static LevelControlScript instance = null;
 
-    public int levelPassed = 1;
+	public int levelPassed = 1;
     public int currentLevel = 1;
 
     public string[] levels;
@@ -25,6 +25,11 @@ public class LevelControlScript : MonoBehaviour
         }
         else Destroy(gameObject);
 
+		if ( PlayerPrefs.GetInt ("LevelsPassed") == 0) {
+			levelPassed = 1;
+		} else {
+			levelPassed = PlayerPrefs.GetInt ("LevelsPassed");	
+		}
         startsPerLevel = new int[levels.Length];
         for (int i = 0; i < startsPerLevel.Length; i++)
         {
@@ -36,15 +41,19 @@ public class LevelControlScript : MonoBehaviour
     {
         Debug.Log("<color=green>YOU WIN!</color>");
 
-        if(currentLevel >= levelPassed)
+		if(currentLevel >= levelPassed)
             levelPassed++;
+		PlayerPrefs.SetInt ("LevelsPassed", levelPassed);
 
         currentLevelStarsCount = 3 - GameObject.FindGameObjectsWithTag("Chest").Length;
         if (currentLevelStarsCount > 3) currentLevelStarsCount = 3;
         if (currentLevelStarsCount < 0) currentLevelStarsCount = 0;
 
         if (startsPerLevel[currentLevel - 1] < currentLevelStarsCount) startsPerLevel[currentLevel - 1] = currentLevelStarsCount;
-
+		if (PlayerPrefs.GetInt("Level" + (currentLevel - 1)) < startsPerLevel [currentLevel - 1]) {			
+			PlayerPrefs.SetInt ("Level" + (currentLevel - 1), startsPerLevel [currentLevel - 1]);
+			PlayerPrefs.Save();
+		}
 
         Invoke("loadMainMenu", 1f);
     }

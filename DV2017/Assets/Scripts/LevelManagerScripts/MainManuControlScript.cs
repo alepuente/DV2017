@@ -12,6 +12,7 @@ public class MainManuControlScript : MonoBehaviour {
 	public void levelToLoad (int level)
 	{
 		LevelControlScript.instance.LoadLevelAsIndex(level);
+		LevelControlScript.instance.currentLevel = level;
 	}
 
 	public void resetButtons()
@@ -19,7 +20,7 @@ public class MainManuControlScript : MonoBehaviour {
         for (int i = 0; i < levelButtonsArray.Length; i++)
         {
                 levelButtonsArray[i].interactable = true;
-            if (LevelControlScript.instance.levelPassed < i + 1)
+			if (LevelControlScript.instance.levelPassed < i + 1)
                 levelButtonsArray[i].interactable = false;
         }
 	}

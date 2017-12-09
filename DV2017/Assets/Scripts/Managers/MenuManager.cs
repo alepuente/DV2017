@@ -63,7 +63,7 @@ public class MenuManager : MonoBehaviour
 
         moneyText.text = "Gold: "+GameManager.instance.money.ToString();
         damageButton.GetComponentInChildren<Text>().text = damagePrice.ToString();
-        damageAmountText.text = "+" + damageAmount + " Cannons Damage";
+        damageAmountText.text = "+" + damageAmount + " Damage";
 
         speedButton.GetComponentInChildren<Text>().text = speedPrice.ToString();
         speedAmountText.text = "+" + speedAmount + " Speed";
@@ -159,7 +159,7 @@ public class MenuManager : MonoBehaviour
         damageAmount += 1;
         damagePrice += 200;
         damageButton.GetComponentInChildren<Text>().text = damagePrice.ToString();
-        damageAmountText.text = "+" + damageAmount + " Cannons Damage";
+        damageAmountText.text = "+" + damageAmount + " Damage";
         CannonDamageUpgradeCount++;
     }
     public void upgradeSpeed()

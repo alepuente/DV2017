@@ -47,9 +47,9 @@ public class MoneyPerLevelManager : MonoBehaviour {
     {
         finishBoard.SetActive(true);
 
-        chestGottedText.text = "Chest gotted : " + ChestGottedCount();
-        currentGoldText.text = "Current gold : " + CurrentMoney;
-        totalEarnedText.text = "Total earned : " + CurrentMoney * ChestGottedCount();
+        chestGottedText.text = "Chest Found : " + ChestGottedCount();
+        currentGoldText.text = "Current Gold : " + CurrentMoney;
+        totalEarnedText.text = "Total Earned : " + CurrentMoney * ChestGottedCount();
 
         Time.timeScale = 0;
     }
