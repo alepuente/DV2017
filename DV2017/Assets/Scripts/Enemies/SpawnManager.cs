@@ -28,7 +28,6 @@ public class SpawnManager : MonoBehaviour {
 	void Update () {
         if (canSpawnEnemies)
         {
-
             if (MenuManager.instance.gameState == GameState.Game)
             {
                 spawnRateTimer += Time.deltaTime;

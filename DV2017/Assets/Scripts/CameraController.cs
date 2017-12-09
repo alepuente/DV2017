@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class CameraController : MonoBehaviour
@@ -54,9 +52,8 @@ public class CameraController : MonoBehaviour
     {
         if (pos == CameraPositions.Menu)
         {
-            mainCamera.gameObject.transform.position = menuPos.transform.position;
             actualPos = CameraPositions.Menu;
-            //mainCamera.gameObject.transform.position = new Vector3(menuPos.transform.position.x, menuPos.transform.position.y, menuPos.transform.position.z);
+            mainCamera.gameObject.transform.position = menuPos.transform.position;
             mainCamera.gameObject.transform.rotation = menuPos.transform.rotation;
         }
         else if (pos == CameraPositions.Close)

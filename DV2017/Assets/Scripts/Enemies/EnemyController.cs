@@ -29,4 +29,10 @@ public class EnemyController : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(new Vector3(newDir.x, 0, newDir.z));       
         }
     }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        GetComponent<Rigidbody>().isKinematic = true;
+        GetComponent<Rigidbody>().isKinematic = false;
+    }
 }

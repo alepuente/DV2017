@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour {
 
     public void addMoney(string tag)
     {
-        money += RewardDic[tag];
+        MoneyPerLevelManager.instance.CurrentMoney += RewardDic[tag];
     }
 
     public float calculateDamage(string type, float health)

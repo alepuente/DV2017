@@ -49,13 +49,16 @@ public class PlayerController : MonoBehaviour
         _rgb.isKinematic = false;
     }
 
-    private void Start()
+    private void OnEnable()
     {
         turnSpeed = GameManager.instance.TurnSpeedDic[tag];
         patrolSpeed = GameManager.instance.SpeedDic[tag];
         reset();
-        GameObject aux = (GameObject)Instantiate(Resources.Load("MovingIndicator"));
+
+        GameObject aux = GameObject.FindGameObjectWithTag("MovingIndicator");
+        if(aux == null) aux = (GameObject)Instantiate(Resources.Load("MovingIndicator"));
         _movingIndicator = aux;
+
         _movingIndicator.SetActive(false);
     }
 

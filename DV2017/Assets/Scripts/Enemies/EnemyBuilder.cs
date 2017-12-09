@@ -34,7 +34,8 @@ public class EnemyBuilder : MonoBehaviour
         gameObject.name = enemyType;
         m.transform.rotation = Quaternion.identity;
         m.AddComponent<EnemyController>().name = enemyType;
-        m.AddComponent<Health>();
+        Health h = m.AddComponent<Health>();
+        h.explotion = (GameObject)Resources.Load("explotion");
         m.AddComponent<HealthBarController>().healthPanel = (GameObject)Instantiate(Resources.Load("HealthBar"));
         m.AddComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionY;
         }

@@ -29,7 +29,7 @@ public class EnemyFactory : MonoBehaviour
 
     public GameObject create(string enemyType)
     {
-        if (enemies.Count>0)
+        if (enemies.Count > 0)
         {
             for (int i = 0; i < enemies.Count; i++)
             {
@@ -38,9 +38,10 @@ public class EnemyFactory : MonoBehaviour
                     enemies[i].SetActive(true);
                     enemiesAlive++;
                     return enemies[i];
-                }            
+                }
             }
-        }       
+        }
+
         GameObject enemie;
         enemie = (GameObject)Instantiate(Resources.Load(enemyType, typeof(GameObject))) as GameObject;
         enemies.Add(enemie);
