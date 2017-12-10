@@ -55,7 +55,7 @@ public class LevelControlScript : MonoBehaviour
 			PlayerPrefs.Save();
 		}
 
-        Invoke("loadMainMenu", 1f);
+        loadMainMenu();
     }
 
     void loadMainMenu()

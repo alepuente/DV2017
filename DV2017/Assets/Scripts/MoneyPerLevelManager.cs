@@ -38,8 +38,10 @@ public class MoneyPerLevelManager : MonoBehaviour {
     int ChestGottedCount()
     {
         int tmp = 3 - GameObject.FindGameObjectsWithTag("Chest").Length;
+
         if (tmp < 0) return 0;
-        if (tmp > 3) return 3;
+        //if (tmp > 3) return 3;
+
         return tmp;
     }
 

@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour {
 
     private void Awake()
     {
-        //PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteAll();
 
         instance = this;
         DamageDic = new Dictionary<string, float>();

@@ -3,7 +3,7 @@
 Shader "Maldo/Silhouette Only" {
 	Properties{
 		_OutlineColor("Outline Color", Color) = (0,0,0,1)
-		_Outline("Outline width", Range(0.0, 10)) = .005
+		_Outline("Outline width", Range(0.0, 100)) = .005
 	}
 
 		CGINCLUDE
