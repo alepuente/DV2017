@@ -21,8 +21,8 @@ public class TutorialManager : MonoBehaviour {
             Destroy(gameObject);
 
         MenuManager.instance.StartGame();
-        SpawnManager.instance.TurnOnOffSpawnEnemiesSpawn();
         MenuManager.instance.gameState = GameState.Tutorial;
+        SpawnManager.instance.TurnOnOffSpawnEnemiesSpawn();
 
         string[] aux = new string[5];
         aux[0] = "Bienvenido al tutorial de Land In Sight!";
@@ -64,7 +64,8 @@ public class TutorialManager : MonoBehaviour {
 
     public void TutorialFinished()
     {
-        //Mensaje("TUTORIAL FINALIZADO...");
+        Mensaje("TUTORIAL FINALIZADO...");
+        Time.timeScale = 1;
         SceneManager.LoadScene("Main");
     }
 }

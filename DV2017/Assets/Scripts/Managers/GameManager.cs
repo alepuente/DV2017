@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour {
 
     private void Awake()
     {
-        PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
 
         instance = this;
         DamageDic = new Dictionary<string, float>();
@@ -57,8 +57,8 @@ public class GameManager : MonoBehaviour {
         TurnSpeedDic.Add("boat", 1.5f);
         TurnSpeedDic.Add("ship", 1f);
         
-        RewardDic.Add("boat", 150);
-        RewardDic.Add("ship", 250);
+        RewardDic.Add("boat", 50);
+        RewardDic.Add("ship", 75);
 
         //startPosition = GameObject.FindGameObjectWithTag("Start").transform;
         //resetPosition = GameObject.FindGameObjectWithTag("resetPos").transform;
@@ -77,7 +77,8 @@ public class GameManager : MonoBehaviour {
 
     public void addMoney(string tag)
     {
-        MoneyPerLevelManager.instance.CurrentMoney += RewardDic[tag];
+        if(MenuManager.instance.gameState != GameState.Tutorial)
+            MoneyPerLevelManager.instance.CurrentMoney += RewardDic[tag];
     }
 
     public float calculateDamage(string type, float health)
