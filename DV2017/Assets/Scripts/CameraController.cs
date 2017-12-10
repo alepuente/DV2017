@@ -10,7 +10,8 @@ public class CameraController : MonoBehaviour
     public GameObject farPos;
     public GameObject menuPos;
 
-    public Camera mainCamera;
+    public Camera menuCamera;
+	public Camera gameCamera;
 
     private CameraPositions actualPos;
 
@@ -52,21 +53,27 @@ public class CameraController : MonoBehaviour
     {
         if (pos == CameraPositions.Menu)
         {
+			gameCamera.gameObject.SetActive (false);
+			menuCamera.gameObject.SetActive (true);
             actualPos = CameraPositions.Menu;
-            mainCamera.gameObject.transform.position = menuPos.transform.position;
-            mainCamera.gameObject.transform.rotation = menuPos.transform.rotation;
+			menuCamera.gameObject.transform.position = menuPos.transform.position;
+			menuCamera.gameObject.transform.rotation = menuPos.transform.rotation;
         }
         else if (pos == CameraPositions.Close)
         {
+			gameCamera.gameObject.SetActive (true);
+			menuCamera.gameObject.SetActive (false);
             actualPos = CameraPositions.Close;
-            mainCamera.gameObject.transform.position = new Vector3(mainCamera.gameObject.transform.position.x, closePos.transform.position.y, mainCamera.gameObject.transform.position.z);
-            mainCamera.gameObject.transform.rotation = closePos.transform.rotation;
+			gameCamera.gameObject.transform.position = new Vector3(gameCamera.gameObject.transform.position.x, closePos.transform.position.y, gameCamera.gameObject.transform.position.z);
+			gameCamera.gameObject.transform.rotation = closePos.transform.rotation;
         }
         else if (pos == CameraPositions.Far)
         {
+			gameCamera.gameObject.SetActive (true);
+			menuCamera.gameObject.SetActive (false);
             actualPos = CameraPositions.Far;
-            mainCamera.gameObject.transform.position = new Vector3(mainCamera.gameObject.transform.position.x, farPos.transform.position.y, mainCamera.gameObject.transform.position.z);
-            mainCamera.gameObject.transform.rotation = farPos.transform.rotation;
+			gameCamera.gameObject.transform.position = new Vector3(gameCamera.gameObject.transform.position.x, farPos.transform.position.y, gameCamera.gameObject.transform.position.z);
+			gameCamera.gameObject.transform.rotation = farPos.transform.rotation;
         }
     }
 
@@ -84,7 +91,7 @@ public class CameraController : MonoBehaviour
         {
             if (actualPos == CameraPositions.Close || actualPos == CameraPositions.Far)
             {
-                mainCamera.gameObject.transform.position = new Vector3(PlayerController.instance.gameObject.transform.position.x, mainCamera.transform.position.y, PlayerController.instance.gameObject.transform.position.z);
+				gameCamera.gameObject.transform.position = new Vector3(PlayerController.instance.gameObject.transform.position.x, gameCamera.transform.position.y, PlayerController.instance.gameObject.transform.position.z);
             }           
         }
     }
