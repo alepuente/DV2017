@@ -125,7 +125,6 @@ public class GameManager : MonoBehaviour {
         HealthDic["ship"] = 20f;
 
         PlayerController.instance.setPositionPlayer(resetPosition);
-
         LevelControlScript.instance.ClearLevels();
     }
 

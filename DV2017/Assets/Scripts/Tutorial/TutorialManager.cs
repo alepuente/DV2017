@@ -20,6 +20,8 @@ public class TutorialManager : MonoBehaviour {
         else
             Destroy(gameObject);
 
+        if(PlayerPrefs.GetInt("tutorial") == 1) SceneManager.LoadScene("Main");
+
         MenuManager.instance.StartGame();
         MenuManager.instance.gameState = GameState.Tutorial;
         SpawnManager.instance.TurnOnOffSpawnEnemiesSpawn();
@@ -64,6 +66,7 @@ public class TutorialManager : MonoBehaviour {
 
     public void TutorialFinished()
     {
+        PlayerPrefs.SetInt("tutorial", 1);
         Mensaje("TUTORIAL FINALIZADO...");
         Time.timeScale = 1;
         SceneManager.LoadScene("Main");

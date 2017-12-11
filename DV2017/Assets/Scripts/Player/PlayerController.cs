@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
     {
         MouseController();
 
-        if (_stateMachine.getActualState1() != SMPlayer.States.OnNest && _stateMachine.getActualState2() != SMPlayer.States.OnNest)
+        if (_stateMachine.getActualState1() != SMPlayer.States.OnNest && _stateMachine.getActualState2() != SMPlayer.States.OnNest && MenuManager.instance.gameState != GameState.Menu)
         {
             CameraController.instance.changeToClose();
         }

@@ -13,7 +13,7 @@ public class CameraController : MonoBehaviour
     public Camera menuCamera;
 	public Camera gameCamera;
 
-    private CameraPositions actualPos;
+    public CameraPositions actualPos;
 
     public bool nest;
 
@@ -92,7 +92,8 @@ public class CameraController : MonoBehaviour
             if (actualPos == CameraPositions.Close || actualPos == CameraPositions.Far)
             {
 				gameCamera.gameObject.transform.position = new Vector3(PlayerController.instance.gameObject.transform.position.x, gameCamera.transform.position.y, PlayerController.instance.gameObject.transform.position.z);
-            }           
+            }       
+            
         }
     }
 }
