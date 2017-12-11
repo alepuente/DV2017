@@ -13,7 +13,7 @@ public class InputKeyboard : IInput
             {
                 ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-                if (Physics.Raycast(ray, out hit))
+                if (Physics.Raycast(ray, out hit, 1000, 1 << LayerMask.NameToLayer("Water")))
                 {
                     switch (hit.collider.tag)
                     {
