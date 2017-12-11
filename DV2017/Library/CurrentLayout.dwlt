@@ -115,7 +115,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 613}
   m_MaxSize: {x: 18008, y: 18063}
   vertical: 0
-  controlID: 91
+  controlID: 142
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -186,7 +186,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 613}
   m_MaxSize: {x: 10004, y: 18063}
   vertical: 1
-  controlID: 128
+  controlID: 71
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -358,8 +358,7 @@ MonoBehaviour:
     m_ScenePaths: []
     m_ShowAllHits: 0
     m_SearchArea: 0
-    m_Folders:
-    - Assets/Scenes
+    m_Folders: []
   m_ViewMode: 0
   m_StartGridSize: 64
   m_LastFolders: []
@@ -370,7 +369,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 8e240000
     m_LastClickedID: 9358
-    m_ExpandedIDs: 00000000c6260000ca260000162700003e2700004c270000042800000c2f0000a4310000b83100005c34000006350000d03500003e360000583600001a3c00002e3c00003c4400008644000018460000886b00008a6b00008c6b00008e6b0000906b0000926b0000946b0000966b0000986b00009a6b0000
+    m_ExpandedIDs: 00000000c6260000ca260000162700003e2700004c270000042800000c2f000008310000a4310000b83100005c34000006350000d03500003e360000583600001e3c0000323c0000643c00001a3e0000404400008a4400001c460000584c00005a4c00005c4c00005e4c0000604c0000624c0000644c0000664c0000684c00006a4c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -395,10 +394,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 1360}
+    scrollPos: {x: 0, y: 121}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000c6260000ca260000162700003e2700004c270000042800000c2f000008310000a4310000b83100005c34000006350000d03500003e360000583600001a3c00002e3c0000603c0000163e00003c4400008644000018460000886b00008a6b00008c6b00008e6b0000906b0000926b0000946b0000966b0000986b00009a6b0000
+    m_ExpandedIDs: 00000000c6260000162700003e270000042800000c2f000008310000a4310000b83100005c34000006350000d03500003e360000583600001e3c0000643c00001a3e00008a4400001c460000584c00005a4c00005c4c00005e4c0000604c0000624c0000644c0000664c0000684c00006a4c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -556,14 +555,14 @@ MonoBehaviour:
     width: 1067
     height: 926
   m_SceneLighting: 1
-  lastFramingTime: 2064.445915730946
+  lastFramingTime: 77.76599540660919
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 158.57556, y: 239.22504, z: -938.0677}
+    m_Target: {x: -13.209808, y: 690.7473, z: 1764.4014}
     speed: 2
-    m_Value: {x: 158.57556, y: 239.22504, z: -938.0677}
+    m_Value: {x: -13.209808, y: 690.7473, z: 1764.4014}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -586,13 +585,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: 0.12270345, y: 0.068804175, z: -0.008555562, w: 0.9900194}
+    m_Target: {x: 0.17442988, y: 0.614871, z: -0.14192471, w: 0.7558886}
     speed: 2
-    m_Value: {x: 0.12270334, y: 0.068804115, z: -0.008555555, w: 0.99001855}
+    m_Value: {x: 0.17442967, y: 0.6148703, z: -0.14192455, w: 0.7558877}
   m_Size:
-    m_Target: 536.97955
+    m_Target: 97.46664
     speed: 2
-    m_Value: 536.97955
+    m_Value: 97.46664
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -631,28 +630,28 @@ MonoBehaviour:
     height: 323
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 42380000
+    m_SelectedIDs: 64d3ffff
     m_LastClickedID: 0
-    m_ExpandedIDs: 227ffafff295faff869dfaff82a5faff2abcfaff16f9fbff1839fcff003cfcffa889fcff328afcffd0b0fcffd8ddfcff1009fdffa843fdff849cfdff9c9dfdffb44afeffb64afeff1afcffff000000007c4b000030b6000058b60000c4b6000084bc00003cbd0000f2be00001abf0000b6bf0000bec100000ac20000e2c20000d2c500001ec600004ac7000050ce000090530100b85301002454010098550100c055010050560100cc560100f456010090570100305801007c58010054590100385a0100845a0100b05b0100
+    m_ExpandedIDs: c4e5ffff62f9ffff64f9ffff1afcffff00000000964c00001c50000008510000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: LlegadaModel
-      m_OriginalName: LlegadaModel
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: -156538
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 10}
     m_SearchString: 
   m_ExpandedScenes:
-  - Tutorial
+  - Main
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
