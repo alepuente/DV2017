@@ -179,6 +179,7 @@ public class PlayerController : MonoBehaviour
     {
         _fullSpeed = true;
         _anchor = false;
+
         if (waypoints.Count > 0)
         {
             // Create two Vector3 variables, one to buffer the ai agents local position, the other to

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class OrbitCamera : MonoBehaviour {
 
@@ -17,6 +18,8 @@ public class OrbitCamera : MonoBehaviour {
 	float rotationXAxis = 0.0f;
 	float velocityX = 0.0f;
 	float velocityY = 0.0f;
+
+
 	// Use this for initialization
 	void Start()
 	{
@@ -29,40 +32,75 @@ public class OrbitCamera : MonoBehaviour {
 			GetComponent<Rigidbody>().freezeRotation = true;
 		}
 	}
-	void LateUpdate()
+
+    bool validInput = true;
+
+    void validateInput()
+    {
+#if UNITY_STANDALONE || UNITY_EDITOR
+        //DESKTOP COMPUTERS
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (EventSystem.current.IsPointerOverGameObject())
+                validInput = false;
+            else
+                validInput = true;
+        }
+#else
+    //MOBILE DEVICES
+    if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+    {
+        if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+            validInput = false;
+        else
+            validInput = true;
+    }
+#endif
+    }
+
+
+    void LateUpdate()
 	{
-		/*if (PlayerController.instance && !target) {
-			target = PlayerController.instance.gameObject.transform;
-		}*/
-		//if (target)
-		//{
-			if (Input.GetMouseButton(0))
-			{
-				velocityX += xSpeed * Input.GetAxis("Mouse X") * distance * 0.02f;
-				velocityY += ySpeed * Input.GetAxis("Mouse Y") * 0.02f;
-			}
-			rotationYAxis += velocityX;
-			rotationXAxis -= velocityY;
-			rotationXAxis = ClampAngle(rotationXAxis, yMinLimit, yMaxLimit);
-			Quaternion fromRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 0);
-			Quaternion toRotation = Quaternion.Euler(rotationXAxis, rotationYAxis, 0);
-			Quaternion rotation = toRotation;
+        validateInput();
 
-			//distance = Mathf.Clamp(distance - Input.GetAxis("Mouse ScrollWheel") * 5, distanceMin, distanceMax);
-			//RaycastHit hit;
-			//if (Physics.Linecast(target.position, transform.position, out hit))
-			//{
-			//distance -= hit.distance;
-			//}
-			//Vector3 negDistance = new Vector3(0.0f, 0.0f, -distance);
-			//Vector3 position = rotation * negDistance + target.position;
+#if UNITY_STANDALONE || UNITY_EDITOR
+        //DESKTOP COMPUTERS
+        if (Input.GetMouseButton(0) && validInput)
+        {
+            //Put your code here
+            //Debug.Log("Valid Input");
+            velocityX += xSpeed * Input.GetAxis("Mouse X") * distance * 0.02f;
+            velocityY += ySpeed * Input.GetAxis("Mouse Y") * 0.02f;
+            
+        }
+            DoMovement();
+#else
 
-			transform.rotation = rotation;
-			//transform.position = position;
-			velocityX = Mathf.Lerp(velocityX, 0, Time.deltaTime * smoothTime);
-			velocityY = Mathf.Lerp(velocityY, 0, Time.deltaTime * smoothTime);
-		//}
-	}
+    //MOBILE DEVICES
+    if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved && validInput)
+    {
+        //Put your code here
+        //Debug.Log("Valid Input");
+        velocityX += xSpeed * Input.GetAxis("Mouse X") * distance * 0.02f;
+        velocityY += ySpeed * Input.GetAxis("Mouse Y") * 0.02f;
+    }
+        DoMovement();
+#endif
+    }
+
+    void DoMovement()
+    {        
+        rotationYAxis -= velocityX/10f;
+        rotationXAxis += velocityY/10f;
+        rotationXAxis = ClampAngle(rotationXAxis, yMinLimit, yMaxLimit);
+        Quaternion fromRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 0);
+        Quaternion toRotation = Quaternion.Euler(rotationXAxis, rotationYAxis, 0);
+        Quaternion rotation = toRotation;
+        transform.rotation = rotation;
+        velocityX = Mathf.Lerp(velocityX, 0, Time.deltaTime * smoothTime);
+        velocityY = Mathf.Lerp(velocityY, 0, Time.deltaTime * smoothTime);
+    }
+
 	public static float ClampAngle(float angle, float min, float max)
 	{
 		if (angle < -360F)
